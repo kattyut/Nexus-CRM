@@ -1,0 +1,103 @@
+{
+  "version": "1.0.0",
+  "descripcion": "Catálogo de frameworks soportados por el agente test-automation de IA IN QA",
+  "default_framework_id": "playwright-typescript",
+  "frameworks": [
+    {
+      "id": "playwright-typescript",
+      "nombre": "Playwright + TypeScript",
+      "archivo": "automation-options/playwright-typescript.md",
+      "lenguaje": "TypeScript",
+      "tipo_app": ["web", "api"],
+      "ideal_para": [
+        "e2e",
+        "frontend moderno",
+        "ci/cd",
+        "automatización web"
+      ],
+      "estructura_carpetas": "projects/{project_slug}/automation/tests/{story_id}.spec.ts",
+      "comando_ejecucion": "npx playwright test",
+      "dependencias": [
+        "@playwright/test",
+        "typescript"
+      ],
+      "estructura_por_nivel": {
+        "basico": "tests/{story_id}.spec.ts + test-data/{story_id}.data.ts",
+        "intermedio": "pages/{PageName}Page.ts + tests/{story_id}.spec.ts + fixtures/index.ts + test-data/{story_id}.data.ts",
+        "avanzado": "pages/{PageName}Page.ts + builders/{Entity}Builder.ts + tests/{story_id}.spec.ts + config/ + fixtures/index.ts + playwright.config.ts + test-data/{story_id}.data.ts"
+      }
+    },
+    {
+      "id": "playwright-python",
+      "nombre": "Playwright + Python",
+      "archivo": "automation-options/playwright-python.md",
+      "lenguaje": "Python",
+      "tipo_app": ["web", "api"],
+      "ideal_para": [
+        "equipos python",
+        "automatizacion web",
+        "e2e",
+        "api testing"
+      ],
+      "estructura_carpetas": "projects/{project_slug}/automation/tests/{story_id}_test.py",
+      "comando_ejecucion": "pytest tests/",
+      "dependencias": [
+        "pytest",
+        "playwright",
+        "pytest-playwright"
+      ],
+      "estructura_por_nivel": {
+        "basico": "tests/{story_id}_test.py + data/{story_id}_data.json",
+        "intermedio": "pages/{page_name}_page.py + tests/{story_id}_test.py + conftest.py + data/{story_id}_data.json",
+        "avanzado": "pages/{page_name}_page.py + builders/{entity}_builder.py + tests/{story_id}_test.py + config/ + conftest.py + pytest.ini + data/{story_id}_data.json"
+      }
+    },
+    {
+      "id": "cypress",
+      "nombre": "Cypress",
+      "archivo": "automation-options/cypress.md",
+      "lenguaje": "JavaScript",
+      "tipo_app": ["web"],
+      "ideal_para": [
+        "frontend testing",
+        "component testing",
+        "rapid testing"
+      ],
+      "estructura_carpetas": "projects/{project_slug}/automation/cypress/e2e/{story_id}.cy.js",
+      "comando_ejecucion": "npx cypress run",
+      "dependencias": [
+        "cypress"
+      ],
+      "estructura_por_nivel": {
+        "basico": "cypress/e2e/{story_id}.cy.js + cypress/fixtures/{story_id}.json",
+        "intermedio": "cypress/e2e/{story_id}.cy.js + cypress/pages/{PageName}.js + cypress/support/commands.js + cypress/fixtures/{story_id}.json",
+        "avanzado": "cypress/e2e/{story_id}.cy.js + cypress/pages/{PageName}.js + cypress/support/commands.js + cypress.config.js + config/{environment}.json + cypress/fixtures/{story_id}.json"
+      }
+    },
+    {
+      "id": "pytest",
+      "nombre": "Pytest API",
+      "archivo": "automation-options/pytest.md",
+      "lenguaje": "Python",
+      "tipo_app": ["api"],
+      "ideal_para": [
+        "apis rest",
+        "microservicios",
+        "contract testing",
+        "backend testing"
+      ],
+      "estructura_carpetas": "projects/{project_slug}/automation/tests/test_{story_id}.py",
+      "comando_ejecucion": "pytest tests/ -v",
+      "dependencias": [
+        "pytest",
+        "requests",
+        "pytest-html"
+      ],
+      "estructura_por_nivel": {
+        "basico": "tests/test_{story_id}.py + data/{story_id}_data.json",
+        "intermedio": "tests/test_{story_id}.py + helpers/api_client.py + conftest.py + data/{story_id}_data.json",
+        "avanzado": "tests/test_{story_id}.py + helpers/api_client.py + builders/{entity}_builder.py + conftest.py + config/ + data/{story_id}_data.json"
+      }
+    }
+  ]
+}

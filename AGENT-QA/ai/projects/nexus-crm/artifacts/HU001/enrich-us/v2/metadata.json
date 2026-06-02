@@ -1,0 +1,44 @@
+{
+  "artifact_type": "enrich_us",
+  "version": "v2",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU001",
+  "title": "HU001 - Gestionar autenticacion de usuarios",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_id": 433,
+  "source_version": "source/v2",
+  "analysis_version": "analysis/v2",
+  "strategy": {
+    "id": "clasica_scrum",
+    "name": "Clasica Scrum",
+    "rule_file": "ai/config/enrichment-options/clasica-scrum.md"
+  },
+  "priority": "2",
+  "status": "Sincronizada",
+  "sync_status": "synced",
+  "validation_status": "generated_with_pending_confirmations",
+  "created_at": "2026-06-01T14:25:23.4250110-05:00",
+  "generated_by": "enrich-us",
+  "traceability": {
+    "azure": {
+      "work_item_id": 433,
+      "project": "Nexus",
+      "rev": 3,
+      "synced_at": "2026-06-01T19:33:25.71Z",
+      "updated_fields": [
+        "System.Description",
+        "Microsoft.VSTS.Common.AcceptanceCriteria",
+        "System.Tags"
+      ]
+    }
+  },
+  "pending_validation": [
+    "Confirmar matriz de roles y permisos.",
+    "Confirmar politica de sesion y expiracion.",
+    "Confirmar mensajes exactos de error.",
+    "Confirmar si bloqueo por intentos fallidos, MFA y recuperacion de contrasena pertenecen a esta HU.",
+    "Confirmar pantalla destino posterior al login."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "artifact_type": "enrich-us",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU003",
+  "work_item_id": 441,
+  "title": "HU003 - Administrar usuarios",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "source_version": "source/v1",
+  "analysis_version": "analysis/v1",
+  "strategy": {
+    "id": "clasica_scrum",
+    "name": "Clasica Scrum",
+    "rule_file": "ai/config/enrichment-options/clasica-scrum.md",
+    "approved_for_project": true
+  },
+  "priority": "2",
+  "status": "Pendiente de aprobacion",
+  "sync_status": "not_synced",
+  "created_at": "2026-06-01T15:47:46.1868850-05:00",
+  "generated_by": "enrich-us",
+  "validation": {
+    "status": "valid_with_pending_business_confirmation",
+    "notes": [
+      "Se conserva la intencion original de la HU.",
+      "Las reglas no confirmadas se registran como pendientes de validacion.",
+      "No se actualizo Azure DevOps."
+    ]
+  }
+}

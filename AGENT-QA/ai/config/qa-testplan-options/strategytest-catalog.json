@@ -1,0 +1,40 @@
+{
+  "default_strategy_id": "basado_cobertura",
+  "strategies": [
+    {
+      "id": "agile",
+      "name": "Agile Testing",
+      "summary": "Plan liviano, iterativo y adaptable.",
+      "preview": "Ideal para Scrum y desarrollo incremental.",
+      "rule_file": "ai/config/qa-testplan-options/agile.md"
+    },
+    {
+      "id": "tradicional_ieee",
+      "name": "Tradicional IEEE",
+      "summary": "Plan formal y altamente documentado.",
+      "preview": "Recomendado para proyectos regulados o auditorías.",
+      "rule_file": "ai/config/qa-testplan-options/tradicional-IEEE.md"
+    },
+    {
+      "id": "basado_cobertura",
+      "name": "Basado en Cobertura",
+      "summary": "Enfocado en cobertura funcional y técnica.",
+      "preview": "Útil para maximizar trazabilidad y validación.",
+      "rule_file": "ai/config/qa-testplan-options/basado-cobertura.md"
+    },
+    {
+      "id": "exploratorio",
+      "name": "Exploratorio",
+      "summary": "Testing dinámico basado en exploración.",
+      "preview": "Ideal para UX, edge cases y descubrimiento rápido.",
+      "rule_file": "ai/config/qa-testplan-options/exploratorio.md"
+    },
+    {
+      "id": "orientado_automatizacion",
+      "name": "Orientado a Automatización",
+      "summary": "Diseñado para pipelines CI/CD y regresión automática.",
+      "preview": "Recomendado para productos escalables y DevOps.",
+      "rule_file": "ai/config/qa-testplan-options/orientado-automatizacion.md"
+    }
+  ]
+}

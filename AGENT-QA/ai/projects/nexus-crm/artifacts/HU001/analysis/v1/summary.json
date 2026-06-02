@@ -1,0 +1,19 @@
+{
+  "action": "analyze-us",
+  "result": "analysis_created",
+  "sufficiency_status": "sufficient_not_enriched",
+  "main_findings": [
+    "La HU tiene estructura Scrum minima.",
+    "Faltan criterios de aceptacion.",
+    "Faltan reglas de seguridad y autenticacion.",
+    "La fuente oficial Azure DevOps no fue validada en esta corrida."
+  ],
+  "main_risks": [
+    "Cobertura QA incompleta.",
+    "Ambiguedad de seguridad.",
+    "Trazabilidad externa pendiente."
+  ],
+  "artifact_path": "ai/projects/nexus-crm/artifacts/HU001/analysis/v1/analysis.md",
+  "next_step": "enrich-us con estrategia clasica_scrum",
+  "created_at": "2026-05-28"
+}

@@ -1,0 +1,21 @@
+{
+  "project_slug": "nexus-crm",
+  "project_name": "Nexus CRM",
+  "status": "business_context_enriched",
+  "business_domain": "CRM B2B enfocado en gestion comercial e inteligencia de negocio",
+  "criticality": "Alta",
+  "management_tool": "Azure DevOps",
+  "source": "user_conversation",
+  "created_at": "2026-05-28",
+  "updated_at": "2026-06-01",
+  "context_completeness": {
+    "business_context": "enriched_with_mockup_backlog_refinement",
+    "management_tool": "defined",
+    "tool_connection": "configured_read_validated",
+    "ready_to_read_user_stories": true
+  },
+  "pending_required_before_reading_hu": [
+    "Confirmar permisos de escritura si se requiere actualizar Azure DevOps.",
+    "Confirmar work_item_type usado para historias de usuario si cambia respecto a User Story."
+  ]
+}

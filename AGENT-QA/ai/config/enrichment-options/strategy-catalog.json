@@ -1,0 +1,40 @@
+{
+  "default_strategy_id": "clasica_scrum",
+  "strategies": [
+    {
+      "id": "clasica_scrum",
+      "name": "Clásica Scrum",
+      "summary": "Formato Como/Quiero/Para con criterios Gherkin.",
+      "preview": "Estructura estándar y verificable para backlog tradicional.",
+      "rule_file": "ai/config/enrichment-options/clasica-scrum.md"
+    },
+    {
+      "id": "valor_3_preguntas",
+      "name": "Valor por 3 preguntas",
+      "summary": "Aclara propósito, forma de uso y validación.",
+      "preview": "Ideal cuando la solicitud está ambigua y falta foco de valor.",
+      "rule_file": "ai/config/enrichment-options/valor3-preguntas.md"
+    },
+    {
+      "id": "escenarios_gherkin",
+      "name": "Escenarios Gherkin",
+      "summary": "Escenario feliz, alternos y error con criterios medibles.",
+      "preview": "Útil para flujos complejos y casos límite.",
+      "rule_file": "ai/config/enrichment-options/escenarios-gherkin.md"
+    },
+    {
+      "id": "tecnico_funcional_nfr",
+      "name": "Técnico funcional con NFR",
+      "summary": "Incluye enfoque funcional y no funcional.",
+      "preview": "Recomendado para alineación temprana entre QA, desarrollo y arquitectura.",
+      "rule_file": "ai/config/enrichment-options/tecnico-funcional-nfr.md"
+    },
+    {
+      "id": "dor_lista_refinamiento",
+      "name": "DoR lista para refinamiento",
+      "summary": "Salida estándar para Definition of Ready.",
+      "preview": "Útil para refinamiento y preparación de sprint.",
+      "rule_file": "ai/config/enrichment-options/dor-lista-refinamiento.md"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "artifact_type": "source",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU001",
+  "title": "Login",
+  "source": "texto manual",
+  "provider": "Manual",
+  "read_status": "normalized",
+  "external_validation": {
+    "provider": "Azure DevOps",
+    "executed": false,
+    "reason": "La usuaria solicito ejecutar el ciclo con la HU pegada manualmente."
+  },
+  "created_at": "2026-05-28",
+  "generated_by": "read-us"
+}

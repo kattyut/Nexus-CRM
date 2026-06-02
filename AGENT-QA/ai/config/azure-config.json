@@ -1,0 +1,7 @@
+{
+  "provider": "azure-devops",
+  "project_slug": "nexus-crm",
+  "artifact_root": "projects",
+  "versioning_enabled": true,
+  "summary_enabled": true
+}

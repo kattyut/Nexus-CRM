@@ -1,0 +1,27 @@
+{
+  "action": "analyze-us",
+  "result": "analysis_created",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU001",
+  "title": "HU001 - Gestionar autenticacion de usuarios",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "source_version": "source/v2",
+  "analysis_version": "v2",
+  "sufficiency_status": "sufficient_not_enriched",
+  "main_findings": [
+    "La HU real fue validada en Azure DevOps como Work Item 433 del proyecto Nexus.",
+    "La HU tiene estructura Como/Quiero/Para y alcance funcional inicial.",
+    "No existen criterios de aceptacion registrados.",
+    "Faltan reglas de seguridad, sesion, autorizacion, mensajes y dependencias."
+  ],
+  "main_risks": [
+    "Cobertura QA incompleta sin criterios verificables.",
+    "Riesgo alto por tratarse de autenticacion.",
+    "Ambiguedad en roles y funcionalidades autorizadas."
+  ],
+  "artifact_path": "ai/projects/nexus-crm/artifacts/HU001/analysis/v2/analysis.md",
+  "next_recommended_step": "Solicitar aprobacion para enriquecer la HU con una estrategia del catalogo oficial.",
+  "created_at": "2026-06-01T14:17:47.1027832-05:00"
+}

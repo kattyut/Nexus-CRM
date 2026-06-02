@@ -1,0 +1,45 @@
+{
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU002",
+  "title": "HU002 - Recuperar acceso a la cuenta",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "official_tool": "Azure DevOps",
+  "official_tool_validation": {
+    "executed": true,
+    "status": "validated",
+    "work_item_id": 434,
+    "team_project": "Nexus",
+    "rev": 2
+  },
+  "artifacts": {
+    "source": {
+      "latest_version": "v1",
+      "path": "ai/projects/nexus-crm/artifacts/HU002/source/v1/source.md",
+      "created_at": "2026-06-01T15:18:22.5804739-05:00"
+    },
+    "analysis": {
+      "latest_version": "v1",
+      "path": "ai/projects/nexus-crm/artifacts/HU002/analysis/v1/analysis.md",
+      "sufficiency_status": "sufficient_not_enriched",
+      "created_at": "2026-06-01T15:20:48.1876982-05:00"
+    },
+    "enrich-us": {
+      "latest_version": "v2",
+      "path": "ai/projects/nexus-crm/artifacts/HU002/enrich-us/v2/enriched-us.md",
+      "created_at": "2026-06-01T15:41:02.2599817-05:00",
+      "strategy": "clasica_scrum",
+      "status": "Pendiente de aprobacion",
+      "sync_status": "not_synced"
+    }
+  },
+  "pending": [
+    "Confirmar mensajes exactos de usuario y wording final.",
+    "Confirmar detalles del servicio de correo y datos de prueba.",
+    "Validar politicas de contrasena aplicada al cambio de clave.",
+    "Confirmar mecanismo exacto de recuperacion: enlace, codigo, token u otro.",
+    "Confirmar vigencia, uso unico y limite de solicitudes antes de sincronizar en Azure DevOps."
+  ],
+  "updated_at": "2026-06-01T15:41:02.2599817-05:00"
+}
