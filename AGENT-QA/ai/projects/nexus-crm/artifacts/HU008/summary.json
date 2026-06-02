@@ -1,0 +1,63 @@
+{
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU008",
+  "title": "HU008 - Administrar contactos",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "official_tool": "Azure DevOps",
+  "official_tool_validation": {
+    "executed": true,
+    "status": "validated",
+    "work_item_id": 460,
+    "team_project": "Nexus",
+    "rev": 3
+  },
+  "artifacts": {
+    "source": {
+      "latest_version": "v1",
+      "path": "ai/projects/nexus-crm/artifacts/HU008/source/v1/source.md",
+      "created_at": "2026-06-02T21:33:55.171448+00:00"
+    },
+    "analysis": {
+      "latest_version": "v1",
+      "path": "ai/projects/nexus-crm/artifacts/HU008/analysis/v1/analysis.md",
+      "sufficiency_status": "sufficient_not_enriched",
+      "created_at": "2026-06-02T21:33:55.171448+00:00"
+    },
+    "enrich-us": {
+      "latest_version": "v1",
+      "path": "ai/projects/nexus-crm/artifacts/HU008/enrich-us/v1/enriched-us.md",
+      "created_at": "2026-06-02T21:33:55.171448+00:00",
+      "strategy": "clasica_scrum",
+      "status": "Pendiente de aprobacion",
+      "sync_status": "synced",
+      "azure_sync": {
+        "tool": "Azure DevOps",
+        "work_item_id": 460,
+        "azure_rev": 3,
+        "azure_changed_date": "2026-06-02T21:33:55.437Z",
+        "synced_at": "2026-06-02T21:33:55.171448+00:00",
+        "fields_updated": [
+          "System.Description",
+          "Microsoft.VSTS.Common.AcceptanceCriteria",
+          "System.Tags",
+          "System.History"
+        ],
+        "tags": [
+          "qa-enriched",
+          "clasica_scrum",
+          "pending-validation"
+        ]
+      }
+    }
+  },
+  "pending": [
+    "Confirmar criterios de aceptacion definitivos con negocio.",
+    "Confirmar reglas de permisos y perfiles autorizados.",
+    "Confirmar campos obligatorios, validaciones y mensajes esperados.",
+    "Confirmar excepciones funcionales y escenarios negativos.",
+    "Confirmar si se requiere auditoria o historial de cambios."
+  ],
+  "updated_at": "2026-06-02T21:33:55.171448+00:00"
+}

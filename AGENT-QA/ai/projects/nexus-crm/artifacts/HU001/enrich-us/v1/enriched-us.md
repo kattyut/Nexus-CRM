@@ -1,12 +1,12 @@
-# HU enriquecida - HU001: Login
+# HU enriquecida - HU001: Gestionar autenticación de usuarios
 
 | Campo | Valor |
 |---|---|
 | Proyecto | Nexus CRM |
-| Origen | Manual - texto proporcionado en conversacion |
+| Origen | Azure DevOps |
 | Metodologia / estrategia | clasica_scrum - Clasica Scrum |
-| Contexto breve | Inicio de sesion con correo y contrasena para acceder al CRM. |
-| Prioridad | Pendiente de definicion |
+| Contexto breve | Gestionar autenticación de usuarios. |
+| Prioridad | 2 |
 | Version | v1 |
 | Estado | Pendiente de aprobacion |
 
@@ -14,110 +14,136 @@
 
 | Campo | Valor |
 |---|---|
-| Proyecto | Nexus CRM |
+| Proyecto QA | Nexus CRM |
+| Project slug | nexus-crm |
 | HU ID | HU001 |
-| Titulo | Login |
-| Provider | Manual |
-| Source | Texto manual |
+| Work Item Azure DevOps | 433 |
+| Titulo origen | HU001 - Gestionar autenticación de usuarios |
+| Provider | Azure DevOps |
+| Source | Azure DevOps |
 | Estrategia aplicada | clasica_scrum - Clasica Scrum |
 | Archivo de reglas | ai/config/enrichment-options/clasica-scrum.md |
-| Sincronizacion Azure DevOps | No sincronizada |
+| Version fuente | source/v1 |
+| Version analisis | analysis/v1 |
+| Version enriquecimiento | v1 |
+| Estado sincronizacion | Sincronizada con Azure DevOps |
 
 ## Historia original
 
-Como usuario  
-Quiero iniciar sesion con mi correo y contrasena  
-Para acceder al sistema de manera segura
+Como usuario del sistema  
+Quiero iniciar y cerrar sesión de forma segura  
+Para acceder únicamente a las funcionalidades autorizadas y proteger mi información.
 
 ## Historia enriquecida
 
-Como usuario del sistema Nexus CRM  
-Quiero iniciar sesion con mi correo y contrasena  
-Para acceder de manera segura a las funcionalidades del CRM segun mi perfil autorizado
+Como usuario del sistema  
+Quiero iniciar y cerrar sesión de forma segura  
+Para acceder únicamente a las funcionalidades autorizadas y proteger mi información.  
+Para mantener trazabilidad y control funcional dentro de Nexus CRM.
 
 ## Contexto funcional
 
-El login permite que los usuarios autorizados accedan al sistema Nexus CRM usando credenciales basicas: correo y contrasena. Esta capacidad protege la informacion comercial del sistema y habilita el acceso inicial a funcionalidades como gestion de empresas, contactos, actividades y dashboards, segun el perfil que tenga cada usuario.
-
-El detalle de roles, permisos, politicas de contrasena, bloqueo de cuenta, recuperacion de contrasena y autenticacion multifactor queda pendiente de validacion funcional.
+La HU HU001 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Gestionar autenticación de usuarios'. La version enriquecida conserva la intencion original leida desde Azure DevOps y agrega criterios verificables para refinamiento, QA y validacion de negocio.
 
 ## Criterios de aceptacion
 
-### CA-001 - Inicio de sesion exitoso
+### CA-001 - Acceso a la funcionalidad
 
-Dado que el usuario tiene una cuenta registrada y activa en Nexus CRM  
-Y cuenta con correo y contrasena validos  
-Cuando ingresa sus credenciales y solicita iniciar sesion  
-Entonces el sistema debe permitir el acceso al CRM  
-Y debe dirigir al usuario a la pantalla inicial correspondiente segun el comportamiento definido para su perfil.
+Dado que el usuario autorizado accede a Nexus CRM  
+Cuando solicita gestionar autenticación de usuarios  
+Entonces el sistema presenta la funcionalidad disponible segun sus permisos.
 
-### CA-002 - Correo requerido
+### CA-002 - Ejecutar operacion principal
 
-Dado que el usuario esta en la pantalla de login  
-Cuando intenta iniciar sesion sin ingresar correo  
-Entonces el sistema debe impedir el inicio de sesion  
-Y debe informar que el correo es obligatorio.
+Dado que el usuario cuenta con permisos suficientes  
+Cuando completa la informacion requerida para gestionar autenticación de usuarios  
+Entonces el sistema procesa la operacion  
+Y confirma el resultado de forma clara.
 
-### CA-003 - Contrasena requerida
+### CA-003 - Validar informacion obligatoria
 
-Dado que el usuario esta en la pantalla de login  
-Cuando intenta iniciar sesion sin ingresar contrasena  
-Entonces el sistema debe impedir el inicio de sesion  
-Y debe informar que la contrasena es obligatoria.
+Dado que el usuario esta ejecutando gestionar autenticación de usuarios  
+Cuando omite informacion obligatoria o ingresa datos invalidos  
+Entonces el sistema no completa la operacion  
+Y muestra las validaciones correspondientes.
 
-### CA-004 - Credenciales invalidas
+### CA-004 - Restringir usuario sin permiso
 
-Dado que el usuario esta en la pantalla de login  
-Cuando ingresa un correo o contrasena que no corresponde a una cuenta valida  
-Entonces el sistema debe impedir el acceso  
-Y debe mostrar un mensaje de error sin exponer informacion sensible sobre la cuenta o la contrasena.
+Dado que un usuario no autorizado intenta gestionar autenticación de usuarios  
+Cuando solicita la accion  
+Entonces el sistema bloquea la operacion  
+Y muestra un mensaje de permiso insuficiente.
 
-### CA-005 - Acceso protegido sin autenticacion
+### CA-005 - Mantener trazabilidad
 
-Dado que una persona no ha iniciado sesion en Nexus CRM  
-Cuando intenta acceder a una funcionalidad interna del sistema  
-Entonces el sistema debe impedir el acceso directo  
-Y debe solicitar autenticacion antes de permitir la navegacion interna.
+Dado que la operacion gestionar autenticación de usuarios se completa correctamente  
+Cuando el sistema guarda el resultado  
+Entonces registra la informacion necesaria para trazabilidad funcional o auditoria si negocio lo confirma.
 
-### CA-006 - Formato basico de correo
+### CA-006 - Validar alcance: Login
 
-Dado que el usuario esta en la pantalla de login  
-Cuando ingresa un valor que no corresponde a un formato de correo valido  
-Entonces el sistema debe impedir el inicio de sesion  
-Y debe informar que el correo ingresado no tiene un formato valido.
+Dado que el alcance de la HU incluye login  
+Cuando el usuario ejecuta el flujo correspondiente  
+Entonces el sistema permite validar login segun las reglas aprobadas por negocio.
+
+### CA-007 - Validar alcance: Logout
+
+Dado que el alcance de la HU incluye logout  
+Cuando el usuario ejecuta el flujo correspondiente  
+Entonces el sistema permite validar logout segun las reglas aprobadas por negocio.
+
+### CA-008 - Validar alcance: Validación de credenciales
+
+Dado que el alcance de la HU incluye validación de credenciales  
+Cuando el usuario ejecuta el flujo correspondiente  
+Entonces el sistema permite validar validación de credenciales segun las reglas aprobadas por negocio.
+
+### CA-009 - Validar alcance: Manejo de sesión
+
+Dado que el alcance de la HU incluye manejo de sesión  
+Cuando el usuario ejecuta el flujo correspondiente  
+Entonces el sistema permite validar manejo de sesión segun las reglas aprobadas por negocio.
 
 ## Reglas de negocio
 
-- Solo usuarios autorizados deben poder acceder a las funcionalidades internas de Nexus CRM.
-- El login se realiza con correo y contrasena, segun la HU original.
-- El sistema no debe permitir acceso a funcionalidades internas sin autenticacion previa.
-- Los mensajes de error no deben revelar informacion sensible sobre existencia de cuentas, estado de cuenta o contrasenas.
+### Reglas confirmadas por HU o contexto
+
+- La HU fue leida desde Azure DevOps como Work Item 433.
+- El titulo funcional es HU001 - Gestionar autenticación de usuarios.
+- El estado actual en Azure DevOps es New.
+- La HU debe mantener trazabilidad con el proyecto Nexus.
+- El alcance indicado incluye Login.
+- El alcance indicado incluye Logout.
+- El alcance indicado incluye Validación de credenciales.
+- El alcance indicado incluye Manejo de sesión.
+- El alcance indicado incluye Mensajes de error básicos.
+
+### Reglas pendientes de validacion
+
+- Confirmar criterios de aceptacion definitivos con negocio.
+- Confirmar reglas de permisos y perfiles autorizados.
+- Confirmar campos obligatorios, validaciones y mensajes esperados.
+- Confirmar excepciones funcionales y escenarios negativos.
+- Confirmar si se requiere auditoria o historial de cambios.
 
 ## Dependencias
 
-- Modulo o mecanismo de gestion de usuarios.
-- Definicion de perfiles y permisos del sistema.
-- Definicion del destino posterior al login para cada perfil o para el flujo inicial comun.
-- Definicion de datos de prueba: usuarios validos, usuarios invalidos y estados de cuenta.
-
-## Supuestos y dudas
-
-- Supuesto: todos los perfiles identificados para Nexus CRM pueden usar el login, salvo que negocio defina restricciones.
-- Pendiente de validacion: si el login debe diferenciar gerencia, equipo comercial, analistas y administrador desde el acceso inicial.
-- Pendiente de validacion: si existen cuentas inactivas, bloqueadas o pendientes de activacion.
-- Pendiente de validacion: si se requiere recuperacion de contrasena en el MVP.
-- Pendiente de validacion: si se requiere autenticacion multifactor.
-- Pendiente de validacion: si existe politica de expiracion de sesion.
-- Pendiente de validacion: si existe politica de bloqueo por intentos fallidos.
+- Modulo o pantalla funcional correspondiente en Nexus CRM.
+- Modelo de permisos y roles del sistema.
+- Persistencia de datos asociada a la funcionalidad.
+- Validaciones de backend y frontend.
+- Datos de prueba representativos para QA.
 
 ## Riesgos QA
 
-- Riesgo alto de seguridad si no se definen reglas de sesion, bloqueo, mensajes y acceso no autenticado.
-- Riesgo de alcance si negocio espera recuperacion de contrasena, MFA o politicas avanzadas dentro del MVP.
-- Riesgo de pruebas incompletas si no se definen estados de usuario y roles permitidos.
-- Riesgo de trazabilidad porque esta version fue generada desde texto manual y no desde Work Item validado en Azure DevOps.
+- Riesgo de cobertura incompleta si los criterios no son validados por negocio.
+- Riesgo de comportamiento inconsistente si permisos y validaciones no estan definidos.
+- Riesgo de regresion en flujos relacionados del CRM.
+- Riesgo de automatizacion prematura sin datos y reglas confirmadas.
 
-## Validacion posterior
+## Validacion de consistencia
 
-Esta HU enriquecida mejora claridad, criterios verificables y cobertura QA inicial sin sincronizar cambios en Azure DevOps. Para aprobacion final se recomienda validar los pendientes funcionales y asociar esta version al Work Item real cuando la conexion este configurada.
-
+- El enriquecimiento conserva la intencion original de la HU.
+- Los criterios propuestos derivan del alcance leido en Azure DevOps.
+- Las reglas no documentadas en Azure DevOps se registran como pendientes de validacion.
+- La HU queda preparada para refinamiento funcional y posterior generacion de plan/casos.

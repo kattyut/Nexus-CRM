@@ -11,35 +11,53 @@
     "status": "validated",
     "work_item_id": 434,
     "team_project": "Nexus",
-    "rev": 2
+    "rev": 3
   },
   "artifacts": {
     "source": {
       "latest_version": "v1",
       "path": "ai/projects/nexus-crm/artifacts/HU002/source/v1/source.md",
-      "created_at": "2026-06-01T15:18:22.5804739-05:00"
+      "created_at": "2026-06-02T21:33:48.990821+00:00"
     },
     "analysis": {
       "latest_version": "v1",
       "path": "ai/projects/nexus-crm/artifacts/HU002/analysis/v1/analysis.md",
       "sufficiency_status": "sufficient_not_enriched",
-      "created_at": "2026-06-01T15:20:48.1876982-05:00"
+      "created_at": "2026-06-02T21:33:48.990821+00:00"
     },
     "enrich-us": {
-      "latest_version": "v2",
-      "path": "ai/projects/nexus-crm/artifacts/HU002/enrich-us/v2/enriched-us.md",
-      "created_at": "2026-06-01T15:41:02.2599817-05:00",
+      "latest_version": "v1",
+      "path": "ai/projects/nexus-crm/artifacts/HU002/enrich-us/v1/enriched-us.md",
+      "created_at": "2026-06-02T21:33:48.990821+00:00",
       "strategy": "clasica_scrum",
       "status": "Pendiente de aprobacion",
-      "sync_status": "not_synced"
+      "sync_status": "synced",
+      "azure_sync": {
+        "tool": "Azure DevOps",
+        "work_item_id": 434,
+        "azure_rev": 3,
+        "azure_changed_date": "2026-06-02T21:33:49.607Z",
+        "synced_at": "2026-06-02T21:33:48.990821+00:00",
+        "fields_updated": [
+          "System.Description",
+          "Microsoft.VSTS.Common.AcceptanceCriteria",
+          "System.Tags",
+          "System.History"
+        ],
+        "tags": [
+          "qa-enriched",
+          "clasica_scrum",
+          "pending-validation"
+        ]
+      }
     }
   },
   "pending": [
-    "Confirmar mensajes exactos de usuario y wording final.",
-    "Confirmar detalles del servicio de correo y datos de prueba.",
-    "Validar politicas de contrasena aplicada al cambio de clave.",
-    "Confirmar mecanismo exacto de recuperacion: enlace, codigo, token u otro.",
-    "Confirmar vigencia, uso unico y limite de solicitudes antes de sincronizar en Azure DevOps."
+    "Confirmar criterios de aceptacion definitivos con negocio.",
+    "Confirmar reglas de permisos y perfiles autorizados.",
+    "Confirmar campos obligatorios, validaciones y mensajes esperados.",
+    "Confirmar excepciones funcionales y escenarios negativos.",
+    "Confirmar si se requiere auditoria o historial de cambios."
   ],
-  "updated_at": "2026-06-01T15:41:02.2599817-05:00"
+  "updated_at": "2026-06-02T21:33:48.990821+00:00"
 }

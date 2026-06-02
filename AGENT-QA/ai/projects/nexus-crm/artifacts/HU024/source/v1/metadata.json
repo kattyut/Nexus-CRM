@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU024",
+  "work_item_id": 491,
+  "title": "HU024 - Consultar alertas operativas",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 1,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-06-01T19:07:37.03Z",
+  "changed_date": "2026-06-01T19:07:37.03Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:34:06.287152+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU001",
+  "work_item_id": 433,
+  "title": "HU001 - Gestionar autenticación de usuarios",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 4,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-05-29T18:11:29.433Z",
+  "changed_date": "2026-06-01T19:39:45.403Z",
+  "acceptance_criteria_count": 1,
+  "read_at": "2026-06-02T21:33:48.179142+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

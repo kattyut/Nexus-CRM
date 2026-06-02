@@ -4,25 +4,23 @@
   "project_name": "Nexus CRM",
   "project_slug": "nexus-crm",
   "hu_id": "HU001",
-  "title": "Login",
-  "source": "texto manual",
-  "provider": "Manual",
-  "source_version": "source/manual-2026-05-28",
+  "title": "HU001 - Gestionar autenticación de usuarios",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "source_version": "source/v1",
   "sufficiency_status": "sufficient_not_enriched",
-  "initial_state": {
-    "status": "No validado en herramienta",
-    "priority": "Pendiente de definicion",
-    "has_description": true,
-    "acceptance_criteria_count": 0,
-    "business_rules_count": 0,
-    "dependencies_count": 0
-  },
   "validation_status": "partial",
-  "blocking_findings": [
-    "No existen criterios de aceptacion originales.",
-    "No se valido Work Item real en Azure DevOps.",
-    "No estan definidas reglas de autenticacion ni seguridad."
-  ],
-  "created_at": "2026-05-28",
+  "traceability": {
+    "azure": {
+      "work_item_id": 433,
+      "organization_url": "https://dev.azure.com/GMLSoft",
+      "project": "Nexus",
+      "area_path": "Nexus",
+      "iteration_path": "Nexus\\Sprint 1",
+      "work_item_type": "User Story",
+      "rev": 4
+    }
+  },
+  "created_at": "2026-06-02T21:33:48.179142+00:00",
   "generated_by": "analyze-us"
 }

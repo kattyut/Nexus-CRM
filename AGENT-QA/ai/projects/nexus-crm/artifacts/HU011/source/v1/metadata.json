@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU011",
+  "work_item_id": 467,
+  "title": "HU011 - Consultar historial comercial",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 1,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-06-01T16:24:19.06Z",
+  "changed_date": "2026-06-01T16:24:19.06Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:33:57.278553+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU004",
+  "work_item_id": 446,
+  "title": "HU004 - Administrar roles",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 3,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-05-29T18:22:29.283Z",
+  "changed_date": "2026-06-01T14:58:36.22Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:33:51.012360+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

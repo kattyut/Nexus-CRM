@@ -1,0 +1,13 @@
+{
+  "action": "analyze-us",
+  "result": "analysis_created",
+  "sufficiency_status": "sufficient_not_enriched",
+  "main_findings": [
+    "La HU tiene intencion funcional identificable.",
+    "Requiere validacion de criterios por negocio.",
+    "Faltan reglas detalladas para QA definitivo."
+  ],
+  "artifact_path": "ai/projects/nexus-crm/artifacts/HU027/analysis/v1/analysis.md",
+  "next_step": "Ejecutar enrich-us con estrategia clasica_scrum.",
+  "created_at": "2026-06-02T21:34:07.956171+00:00"
+}

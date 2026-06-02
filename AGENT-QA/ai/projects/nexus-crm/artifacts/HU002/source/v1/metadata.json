@@ -4,40 +4,20 @@
   "project_name": "Nexus CRM",
   "project_slug": "nexus-crm",
   "hu_id": "HU002",
+  "work_item_id": 434,
   "title": "HU002 - Recuperar acceso a la cuenta",
   "source": "Azure DevOps",
   "provider": "Azure DevOps",
-  "read_status": "normalized",
-  "external_validation": {
-    "provider": "Azure DevOps",
-    "executed": true,
-    "status": "validated",
-    "work_item_id": 434,
-    "team_project": "Nexus",
-    "work_item_type": "User Story",
-    "rev": 2
-  },
-  "traceability": {
-    "azure": {
-      "work_item_id": 434,
-      "organization_url": "https://dev.azure.com/GMLSoft",
-      "project": "Nexus",
-      "area_path": "Nexus",
-      "iteration_path": "Nexus\\Sprint 1",
-      "work_item_type": "User Story",
-      "rev": 2,
-      "tags": null,
-      "relations_count": 1
-    }
-  },
-  "initial_state": {
-    "status": "New",
-    "priority": "2",
-    "has_description": true,
-    "acceptance_criteria_count": 0,
-    "business_rules_count": 0,
-    "dependencies_count": 0
-  },
-  "created_at": "2026-06-01T15:18:22.5804739-05:00",
-  "generated_by": "read-us"
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 2,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-05-29T18:12:03.123Z",
+  "changed_date": "2026-06-01T14:55:23.54Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:33:48.990821+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
 }

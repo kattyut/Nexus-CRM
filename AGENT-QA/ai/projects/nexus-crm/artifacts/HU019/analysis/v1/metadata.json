@@ -1,0 +1,26 @@
+{
+  "artifact_type": "analysis",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU019",
+  "title": "HU019 - Consultar indicadores generales del CRM",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "source_version": "source/v1",
+  "sufficiency_status": "sufficient_not_enriched",
+  "validation_status": "partial",
+  "traceability": {
+    "azure": {
+      "work_item_id": 479,
+      "organization_url": "https://dev.azure.com/GMLSoft",
+      "project": "Nexus",
+      "area_path": "Nexus",
+      "iteration_path": "Nexus\\Sprint 1",
+      "work_item_type": "User Story",
+      "rev": 1
+    }
+  },
+  "created_at": "2026-06-02T21:34:03.144955+00:00",
+  "generated_by": "analyze-us"
+}

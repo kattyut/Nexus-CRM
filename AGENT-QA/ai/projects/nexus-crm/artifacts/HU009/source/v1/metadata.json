@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU009",
+  "work_item_id": 462,
+  "title": "HU009 - Asociar contactos a empresas",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 3,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-05-29T18:46:30.237Z",
+  "changed_date": "2026-06-01T16:20:29.663Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:33:55.766216+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU016",
+  "work_item_id": 475,
+  "title": "HU016 - Consultar posibles registros duplicados",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 1,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-06-01T18:02:55.68Z",
+  "changed_date": "2026-06-01T18:02:55.68Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:34:01.141030+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

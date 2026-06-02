@@ -1,0 +1,31 @@
+{
+  "latest_version": "v1",
+  "path": "ai/projects/nexus-crm/artifacts/HU019/enrich-us/v1/enriched-us.md",
+  "created_at": "2026-06-02T21:34:03.144955+00:00",
+  "strategy": {
+    "id": "clasica_scrum",
+    "name": "Clasica Scrum",
+    "rule_file": "ai/config/enrichment-options/clasica-scrum.md",
+    "approved_for_project": true
+  },
+  "status": "Pendiente de aprobacion",
+  "sync_status": "synced",
+  "azure_sync": {
+    "tool": "Azure DevOps",
+    "work_item_id": 479,
+    "azure_rev": 2,
+    "azure_changed_date": "2026-06-02T21:34:03.517Z",
+    "synced_at": "2026-06-02T21:34:03.144955+00:00",
+    "fields_updated": [
+      "System.Description",
+      "Microsoft.VSTS.Common.AcceptanceCriteria",
+      "System.Tags",
+      "System.History"
+    ],
+    "tags": [
+      "qa-enriched",
+      "clasica_scrum",
+      "pending-validation"
+    ]
+  }
+}

@@ -1,24 +1,42 @@
 {
-  "artifact_type": "enriched_user_story",
+  "artifact_type": "enrich-us",
   "version": "v1",
   "project_name": "Nexus CRM",
   "project_slug": "nexus-crm",
   "hu_id": "HU001",
-  "title": "Login",
-  "source": "texto manual",
-  "provider": "Manual",
+  "work_item_id": 433,
+  "title": "HU001 - Gestionar autenticación de usuarios",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "source_version": "source/v1",
+  "analysis_version": "analysis/v1",
   "strategy": {
     "id": "clasica_scrum",
     "name": "Clasica Scrum",
-    "rule_file": "ai/config/enrichment-options/clasica-scrum.md"
+    "rule_file": "ai/config/enrichment-options/clasica-scrum.md",
+    "approved_for_project": true
   },
-  "priority": "Pendiente de definicion",
+  "priority": "2",
   "status": "Pendiente de aprobacion",
-  "sync_status": {
+  "sync_status": "synced",
+  "sync": {
     "tool": "Azure DevOps",
-    "synced": false,
-    "reason": "Conexion Azure DevOps no configurada y sincronizacion externa no solicitada explicitamente."
+    "work_item_id": 433,
+    "azure_rev": 5,
+    "azure_changed_date": "2026-06-02T21:33:48.683Z",
+    "synced_at": "2026-06-02T21:33:48.179142+00:00",
+    "fields_updated": [
+      "System.Description",
+      "Microsoft.VSTS.Common.AcceptanceCriteria",
+      "System.Tags",
+      "System.History"
+    ],
+    "tags": [
+      "qa-enriched",
+      "clasica_scrum",
+      "pending-validation"
+    ]
   },
-  "created_at": "2026-05-28",
+  "created_at": "2026-06-02T21:33:48.179142+00:00",
   "generated_by": "enrich-us"
 }

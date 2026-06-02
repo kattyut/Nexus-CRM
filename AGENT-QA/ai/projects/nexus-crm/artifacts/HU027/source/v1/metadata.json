@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU027",
+  "work_item_id": 496,
+  "title": "HU027 - Configurar preferencias funcionales",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 1,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-06-01T19:09:34.01Z",
+  "changed_date": "2026-06-01T19:09:34.01Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:34:07.956171+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

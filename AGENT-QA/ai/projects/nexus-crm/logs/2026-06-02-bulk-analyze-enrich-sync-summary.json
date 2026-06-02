@@ -1,0 +1,201 @@
+{
+  "count": 28,
+  "items": [
+    {
+      "hu_id": "HU001",
+      "work_item_id": 433,
+      "title": "HU001 - Gestionar autenticación de usuarios",
+      "rev_before": 4,
+      "rev_after": 5
+    },
+    {
+      "hu_id": "HU002",
+      "work_item_id": 434,
+      "title": "HU002 - Recuperar acceso a la cuenta",
+      "rev_before": 2,
+      "rev_after": 3
+    },
+    {
+      "hu_id": "HU003",
+      "work_item_id": 441,
+      "title": "HU003 - Administrar usuarios",
+      "rev_before": 4,
+      "rev_after": 5
+    },
+    {
+      "hu_id": "HU004",
+      "work_item_id": 446,
+      "title": "HU004 - Administrar roles",
+      "rev_before": 3,
+      "rev_after": 4
+    },
+    {
+      "hu_id": "HU005",
+      "work_item_id": 447,
+      "title": "HU005 - Asignar/restringir roles",
+      "rev_before": 6,
+      "rev_after": 7
+    },
+    {
+      "hu_id": "HU006",
+      "work_item_id": 452,
+      "title": "HU006 - Administrar empresas",
+      "rev_before": 5,
+      "rev_after": 6
+    },
+    {
+      "hu_id": "HU007",
+      "work_item_id": 456,
+      "title": "HU007 - Consultar empresas",
+      "rev_before": 2,
+      "rev_after": 3
+    },
+    {
+      "hu_id": "HU008",
+      "work_item_id": 460,
+      "title": "HU008 - Administrar contactos",
+      "rev_before": 2,
+      "rev_after": 3
+    },
+    {
+      "hu_id": "HU009",
+      "work_item_id": 462,
+      "title": "HU009 - Asociar contactos a empresas",
+      "rev_before": 3,
+      "rev_after": 4
+    },
+    {
+      "hu_id": "HU010",
+      "work_item_id": 465,
+      "title": "HU010 - Administrar actividades comerciales",
+      "rev_before": 2,
+      "rev_after": 3
+    },
+    {
+      "hu_id": "HU011",
+      "work_item_id": 467,
+      "title": "HU011 - Consultar historial comercial",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU012",
+      "work_item_id": 469,
+      "title": "HU012 - Programar seguimiento comercial",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU013",
+      "work_item_id": 471,
+      "title": "HU013 - Configurar archivo de importación",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU014",
+      "work_item_id": 472,
+      "title": "HU014 - Revisar inconsistencias de importación",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU015",
+      "work_item_id": 473,
+      "title": "HU015 - Ejecutar y confirmar importación",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU016",
+      "work_item_id": 475,
+      "title": "HU016 - Consultar posibles registros duplicados",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU017",
+      "work_item_id": 476,
+      "title": "HU017 - Resolver registros duplicados",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU018",
+      "work_item_id": 477,
+      "title": "HU018 - Consultar detalle de coincidencias",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU019",
+      "work_item_id": 479,
+      "title": "HU019 - Consultar indicadores generales del CRM",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU020",
+      "work_item_id": 481,
+      "title": "HU020 - Consultar tendencias e indicadores analíticos",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU021",
+      "work_item_id": 483,
+      "title": "HU021 - Consultar actividad reciente y alertas operativas",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU022",
+      "work_item_id": 488,
+      "title": "HU022 - Consultar indicadores estratégicos",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU023",
+      "work_item_id": 489,
+      "title": "HU023 - Consultar análisis y distribución de datos",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU024",
+      "work_item_id": 491,
+      "title": "HU024 - Consultar alertas operativas",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU025",
+      "work_item_id": 492,
+      "title": "HU025 - Gestionar alertas",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU026",
+      "work_item_id": 494,
+      "title": "HU026 - Configurar preferencias de interfaz",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU027",
+      "work_item_id": 496,
+      "title": "HU027 - Configurar preferencias funcionales",
+      "rev_before": 1,
+      "rev_after": 2
+    },
+    {
+      "hu_id": "HU028",
+      "work_item_id": 498,
+      "title": "HU028 - Configurar notificaciones",
+      "rev_before": 1,
+      "rev_after": 2
+    }
+  ]
+}

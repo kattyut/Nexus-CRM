@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU018",
+  "work_item_id": 477,
+  "title": "HU018 - Consultar detalle de coincidencias",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 1,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-06-01T18:04:55.673Z",
+  "changed_date": "2026-06-01T18:04:55.673Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:34:02.537932+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

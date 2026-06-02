@@ -18,9 +18,6 @@
   "created_date": "2026-05-29T18:18:05.343Z",
   "changed_date": "2026-06-01T14:57:03.96Z",
   "acceptance_criteria_count": 0,
-  "business_rules_count": 0,
-  "dependencies_count": 0,
-  "relations_count": 1,
-  "read_at": "2026-06-01T15:44:35.7570929-05:00",
-  "generated_by": "read-us"
+  "read_at": "2026-06-02T21:33:49.919578+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
 }

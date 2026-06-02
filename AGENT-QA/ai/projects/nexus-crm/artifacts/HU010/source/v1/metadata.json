@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU010",
+  "work_item_id": 465,
+  "title": "HU010 - Administrar actividades comerciales",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 2,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-05-29T19:00:56.92Z",
+  "changed_date": "2026-06-01T16:23:25.6Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:33:56.312203+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

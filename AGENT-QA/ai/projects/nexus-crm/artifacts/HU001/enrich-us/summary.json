@@ -1,29 +1,31 @@
 {
-  "artifact_type": "enrich-us-summary",
-  "latest_version": "v2",
-  "latest_path": "ai/projects/nexus-crm/artifacts/HU001/enrich-us/v2/enriched-us.md",
-  "strategy": "clasica_scrum",
-  "strategy_name": "Clasica Scrum",
-  "status": "Sincronizada",
-  "source_version": "source/v2",
-  "analysis_version": "analysis/v2",
-  "provider": "Azure DevOps",
-  "work_item_id": 433,
+  "latest_version": "v1",
+  "path": "ai/projects/nexus-crm/artifacts/HU001/enrich-us/v1/enriched-us.md",
+  "created_at": "2026-06-02T21:33:48.179142+00:00",
+  "strategy": {
+    "id": "clasica_scrum",
+    "name": "Clasica Scrum",
+    "rule_file": "ai/config/enrichment-options/clasica-scrum.md",
+    "approved_for_project": true
+  },
+  "status": "Pendiente de aprobacion",
   "sync_status": "synced",
-  "azure_rev": 3,
-  "synced_at": "2026-06-01T19:33:25.71Z",
-  "updated_fields": [
-    "System.Description",
-    "Microsoft.VSTS.Common.AcceptanceCriteria",
-    "System.Tags"
-  ],
-  "created_at": "2026-05-28",
-  "updated_at": "2026-06-01T14:25:23.4250110-05:00",
-  "pending_validation": [
-    "Confirmar matriz de roles y permisos.",
-    "Confirmar politica de sesion y expiracion.",
-    "Confirmar mensajes exactos de error.",
-    "Confirmar si bloqueo por intentos fallidos, MFA y recuperacion de contrasena pertenecen a esta HU.",
-    "Confirmar pantalla destino posterior al login."
-  ]
+  "azure_sync": {
+    "tool": "Azure DevOps",
+    "work_item_id": 433,
+    "azure_rev": 5,
+    "azure_changed_date": "2026-06-02T21:33:48.683Z",
+    "synced_at": "2026-06-02T21:33:48.179142+00:00",
+    "fields_updated": [
+      "System.Description",
+      "Microsoft.VSTS.Common.AcceptanceCriteria",
+      "System.Tags",
+      "System.History"
+    ],
+    "tags": [
+      "qa-enriched",
+      "clasica_scrum",
+      "pending-validation"
+    ]
+  }
 }

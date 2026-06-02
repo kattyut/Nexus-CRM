@@ -11,36 +11,53 @@
     "status": "validated",
     "work_item_id": 441,
     "team_project": "Nexus",
-    "rev": 4
+    "rev": 5
   },
   "artifacts": {
     "source": {
       "latest_version": "v1",
       "path": "ai/projects/nexus-crm/artifacts/HU003/source/v1/source.md",
-      "created_at": "2026-06-01T15:44:35.7570929-05:00"
+      "created_at": "2026-06-02T21:33:49.919578+00:00"
     },
     "analysis": {
       "latest_version": "v1",
       "path": "ai/projects/nexus-crm/artifacts/HU003/analysis/v1/analysis.md",
       "sufficiency_status": "sufficient_not_enriched",
-      "created_at": "2026-06-01T15:44:35.7570929-05:00"
+      "created_at": "2026-06-02T21:33:49.919578+00:00"
     },
     "enrich-us": {
       "latest_version": "v1",
       "path": "ai/projects/nexus-crm/artifacts/HU003/enrich-us/v1/enriched-us.md",
-      "created_at": "2026-06-01T15:47:46.1868850-05:00",
+      "created_at": "2026-06-02T21:33:49.919578+00:00",
       "strategy": "clasica_scrum",
       "status": "Pendiente de aprobacion",
-      "sync_status": "not_synced"
+      "sync_status": "synced",
+      "azure_sync": {
+        "tool": "Azure DevOps",
+        "work_item_id": 441,
+        "azure_rev": 5,
+        "azure_changed_date": "2026-06-02T21:33:50.687Z",
+        "synced_at": "2026-06-02T21:33:49.919578+00:00",
+        "fields_updated": [
+          "System.Description",
+          "Microsoft.VSTS.Common.AcceptanceCriteria",
+          "System.Tags",
+          "System.History"
+        ],
+        "tags": [
+          "qa-enriched",
+          "clasica_scrum",
+          "pending-validation"
+        ]
+      }
     }
   },
   "pending": [
-    "Confirmar criterios de aceptacion.",
-    "Confirmar campos obligatorios para crear y editar usuarios.",
-    "Confirmar roles, permisos y restricciones de administracion.",
-    "Confirmar comportamiento de activar y desactivar usuarios.",
-    "Confirmar si se requiere auditoria de cambios administrativos.",
-    "Confirmar si la HU se mantiene unificada o se divide por operacion."
+    "Confirmar criterios de aceptacion definitivos con negocio.",
+    "Confirmar reglas de permisos y perfiles autorizados.",
+    "Confirmar campos obligatorios, validaciones y mensajes esperados.",
+    "Confirmar excepciones funcionales y escenarios negativos.",
+    "Confirmar si se requiere auditoria o historial de cambios."
   ],
-  "updated_at": "2026-06-01T15:47:46.1868850-05:00"
+  "updated_at": "2026-06-02T21:33:49.919578+00:00"
 }

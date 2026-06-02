@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU015",
+  "work_item_id": 473,
+  "title": "HU015 - Ejecutar y confirmar importación",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 1,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-06-01T17:52:50.84Z",
+  "changed_date": "2026-06-01T17:52:50.84Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:34:00.278633+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}

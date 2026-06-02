@@ -23,24 +23,16 @@
 ## Historia original normalizada
 
 Como usuario del sistema  
-Quiero recuperar mi contrasena mediante correo electronico  
+Quiero recuperar mi contraseña mediante correo electrónico  
 Para restablecer el acceso cuando no recuerde mis credenciales.
 
 ## Alcance indicado en Azure DevOps
 
-No se registran elementos adicionales de alcance en la descripcion.
+- No se registran elementos adicionales de alcance en la descripcion.
 
 ## Criterios de aceptacion originales
 
 No registrados en el campo `Microsoft.VSTS.Common.AcceptanceCriteria`.
-
-## Reglas de negocio originales
-
-No registradas explicitamente en Azure DevOps.
-
-## Dependencias originales
-
-No registradas explicitamente en Azure DevOps.
 
 ## Trazabilidad
 
@@ -49,5 +41,3 @@ No registradas explicitamente en Azure DevOps.
 - `System.WorkItemType`: User Story.
 - `System.State`: New.
 - `System.Tags`: sin tags.
-- Relaciones: 1 relacion registrada en Azure DevOps.
-

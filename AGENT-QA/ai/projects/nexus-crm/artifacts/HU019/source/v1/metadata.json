@@ -1,0 +1,23 @@
+{
+  "artifact_type": "source",
+  "version": "v1",
+  "project_name": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU019",
+  "work_item_id": 479,
+  "title": "HU019 - Consultar indicadores generales del CRM",
+  "source": "Azure DevOps",
+  "provider": "Azure DevOps",
+  "work_item_type": "User Story",
+  "state": "New",
+  "priority": "2",
+  "rev": 1,
+  "team_project": "Nexus",
+  "area_path": "Nexus",
+  "iteration_path": "Nexus\\Sprint 1",
+  "created_date": "2026-06-01T18:15:21.6Z",
+  "changed_date": "2026-06-01T18:15:21.6Z",
+  "acceptance_criteria_count": 0,
+  "read_at": "2026-06-02T21:34:03.144955+00:00",
+  "generated_by": "bulk-analyze-enrich-sync"
+}
