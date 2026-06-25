@@ -30,31 +30,31 @@
 
 ## Historia original
 
-Como administrador del CRM  
+Como usuario de Gerencia  
 Quiero asignar y modificar roles de los usuarios internos  
 Para garantizar que cada usuario acceda solo a las funcionalidades autorizadas segun sus responsabilidades dentro de Nexus CRM.
 
 ## Historia enriquecida
 
-Como administrador del CRM  
+Como usuario de Gerencia  
 Quiero asignar y modificar roles de los usuarios internos  
 Para garantizar que cada usuario acceda solo a las funcionalidades autorizadas segun sus responsabilidades dentro de Nexus CRM.
 
 ## Contexto funcional
 
-La HU HU005 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Asignar/restringir roles'. La version enriquecida conserva la intencion original leida desde Azure DevOps y agrega criterios verificables para refinamiento, QA y validacion de negocio.
+La HU HU005 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Asignar/restringir roles'. La asignacion y modificacion de roles queda reservada al rol Gerencia, que actua como super admin del sistema. No existe un rol Administrador separado en Nexus CRM.
 
 ## Criterios de aceptacion
 
 ### CA-001 - Acceso a la funcionalidad
 
-Dado que el usuario autorizado accede a Nexus CRM  
+Dados que un usuario con rol Gerencia accede a Nexus CRM  
 Cuando solicita asignar/restringir roles  
 Entonces el sistema presenta la funcionalidad disponible segun sus permisos.
 
 ### CA-002 - Ejecutar operacion principal
 
-Dado que el usuario cuenta con permisos suficientes  
+Dados que el usuario cuenta con rol Gerencia  
 Cuando completa la informacion requerida para asignar/restringir roles  
 Entonces el sistema procesa la operacion  
 Y confirma el resultado de forma clara.
@@ -68,7 +68,7 @@ Y muestra las validaciones correspondientes.
 
 ### CA-004 - Restringir usuario sin permiso
 
-Dado que un usuario no autorizado intenta asignar/restringir roles  
+Dados que un usuario con rol Comercial o Analista intenta asignar/restringir roles  
 Cuando solicita la accion  
 Entonces el sistema bloquea la operacion  
 Y muestra un mensaje de permiso insuficiente.
@@ -79,29 +79,32 @@ Dado que la operacion asignar/restringir roles se completa correctamente
 Cuando el sistema guarda el resultado  
 Entonces registra la informacion necesaria para trazabilidad funcional o auditoria si negocio lo confirma.
 
-### CA-006 - Validar alcance: Historia enriquecida
+### CA-006 - Asignar rol valido
 
-Dado que el alcance de la HU incluye historia enriquecida  
-Cuando el usuario ejecuta el flujo correspondiente  
-Entonces el sistema permite validar historia enriquecida segun las reglas aprobadas por negocio.
+Dados que Gerencia esta editando un usuario interno  
+Cuando selecciona uno de los roles validos del sistema  
+Entonces el sistema permite guardar el rol asignado  
+Y aplica los permisos correspondientes al usuario.
 
-### CA-007 - Validar alcance: Contexto funcional
+### CA-007 - Rechazar rol invalido
 
-Dado que el alcance de la HU incluye contexto funcional  
-Cuando el usuario ejecuta el flujo correspondiente  
-Entonces el sistema permite validar contexto funcional segun las reglas aprobadas por negocio.
+Dados que Gerencia esta editando un usuario interno  
+Cuando intenta guardar un usuario sin rol o con un rol no valido  
+Entonces el sistema impide guardar el cambio  
+Y muestra una validacion clara sobre el rol requerido.
 
-### CA-008 - Validar alcance: La HU pertenece al modulo de seguridad y acceso de Nexus CRM. Permite controlar autorizaciones mediante roles, evitando que usuarios internos accedan a funcionalidades que no corresponden a su perfil. El alcance indicado en Azure DevOps incluye asignacion de rol, cambio de rol, restriccion de acceso y validacion de permisos. Por tratarse de una HU sensible de seguridad, las reglas propuestas deben ser confirmadas antes de generar pruebas definitivas
+### CA-008 - Aplicar restricciones por rol
 
-Dado que el alcance de la HU incluye la hu pertenece al modulo de seguridad y acceso de nexus crm. permite controlar autorizaciones mediante roles, evitando que usuarios internos accedan a funcionalidades que no corresponden a su perfil. el alcance indicado en azure devops incluye asignacion de rol, cambio de rol, restriccion de acceso y validacion de permisos. por tratarse de una hu sensible de seguridad, las reglas propuestas deben ser confirmadas antes de generar pruebas definitivas  
-Cuando el usuario ejecuta el flujo correspondiente  
-Entonces el sistema permite validar la hu pertenece al modulo de seguridad y acceso de nexus crm. permite controlar autorizaciones mediante roles, evitando que usuarios internos accedan a funcionalidades que no corresponden a su perfil. el alcance indicado en azure devops incluye asignacion de rol, cambio de rol, restriccion de acceso y validacion de permisos. por tratarse de una hu sensible de seguridad, las reglas propuestas deben ser confirmadas antes de generar pruebas definitivas segun las reglas aprobadas por negocio.
+Dados que un usuario tiene asignado un rol especifico  
+Cuando intenta acceder a una funcionalidad del CRM  
+Entonces el sistema permite solo las funcionalidades autorizadas para ese rol  
+Y restringe las funcionalidades no autorizadas.
 
-### CA-009 - Validar alcance: Reglas confirmadas por HU o contexto
+### CA-009 - Mantener trazabilidad del cambio de rol
 
-Dado que el alcance de la HU incluye reglas confirmadas por hu o contexto  
-Cuando el usuario ejecuta el flujo correspondiente  
-Entonces el sistema permite validar reglas confirmadas por hu o contexto segun las reglas aprobadas por negocio.
+Dados que Gerencia modifica el rol de un usuario interno  
+Cuando el cambio se guarda correctamente  
+Entonces el sistema conserva trazabilidad minima del usuario modificado, rol anterior, rol nuevo, usuario que realizo el cambio y fecha del cambio.
 
 ## Reglas de negocio
 
@@ -111,16 +114,19 @@ Entonces el sistema permite validar reglas confirmadas por hu o contexto segun l
 - El titulo funcional es HU005 - Asignar/restringir roles.
 - El estado actual en Azure DevOps es New.
 - La HU debe mantener trazabilidad con el proyecto Nexus.
-- El alcance indicado incluye Historia enriquecida.
-- El alcance indicado incluye Contexto funcional.
-- El alcance indicado incluye La HU pertenece al modulo de seguridad y acceso de Nexus CRM. Permite controlar autorizaciones mediante roles, evitando que usuarios internos accedan a funcionalidades que no corresponden a su perfil. El alcance indicado en Azure DevOps incluye asignacion de rol, cambio de rol, restriccion de acceso y validacion de permisos. Por tratarse de una HU sensible de seguridad, las reglas propuestas deben ser confirmadas antes de generar pruebas definitivas.
-- El alcance indicado incluye Reglas confirmadas por HU o contexto.
-- El alcance indicado incluye La HU pertenece al modulo de seguridad y acceso de Nexus CRM.
+- Solo Gerencia puede asignar y modificar roles de usuarios internos.
+- No existe un rol Administrador separado para Nexus CRM.
+- Los roles validos del sistema son Gerencia, Comercial y Analista.
+- Gerencia actua como super admin y tiene todos los permisos.
+- Comercial tiene acceso limitado a funcionalidades esenciales para su cargo.
+- Analista tiene permisos orientados a carga/importacion de datos y validacion operativa de informacion importada; no debe acceder a dashboards ni insights.
+- El sistema debe conservar trazabilidad minima de cambios de rol.
 
 ### Reglas pendientes de validacion
 
 - Confirmar criterios de aceptacion definitivos con negocio.
-- Confirmar reglas de permisos y perfiles autorizados.
+- Confirmar matriz detallada de permisos por modulo.
+- Confirmar regla de visibilidad del rol Comercial sobre empresas y contactos.
 - Confirmar campos obligatorios, validaciones y mensajes esperados.
 - Confirmar excepciones funcionales y escenarios negativos.
 - Confirmar si se requiere auditoria o historial de cambios.

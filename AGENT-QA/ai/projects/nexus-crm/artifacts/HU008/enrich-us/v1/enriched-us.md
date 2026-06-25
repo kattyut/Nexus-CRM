@@ -67,38 +67,45 @@ Cuando omite informacion obligatoria o ingresa datos invalidos
 Entonces el sistema no completa la operacion  
 Y muestra las validaciones correspondientes.
 
-### CA-004 - Restringir usuario sin permiso
+### CA-004 - Reglas de asociacion obligatoria
+
+Dado que Gerencia o Comercial registra o edita un contacto  
+Cuando intenta guardar el contacto sin empresa asociada  
+Entonces el sistema debe impedir el guardado  
+Y debe exigir la asociacion a una sola empresa.
+
+### CA-005 - Restringir usuario sin permiso
 
 Dado que un usuario no autorizado intenta administrar contactos  
 Cuando solicita la accion  
 Entonces el sistema bloquea la operacion  
 Y muestra un mensaje de permiso insuficiente.
 
-### CA-005 - Mantener trazabilidad
+### CA-006 - Mantener trazabilidad
 
 Dado que la operacion administrar contactos se completa correctamente  
 Cuando el sistema guarda el resultado  
 Entonces registra la informacion necesaria para trazabilidad funcional o auditoria si negocio lo confirma.
 
-### CA-006 - Validar alcance: Crear contacto
+### CA-007 - Validar alcance: Crear contacto
 
 Dado que el alcance de la HU incluye crear contacto  
 Cuando el usuario ejecuta el flujo correspondiente  
 Entonces el sistema permite validar crear contacto segun las reglas aprobadas por negocio.
 
-### CA-007 - Validar alcance: Editar contacto
+### CA-008 - Validar alcance: Editar contacto
 
 Dado que el alcance de la HU incluye editar contacto  
 Cuando el usuario ejecuta el flujo correspondiente  
 Entonces el sistema permite validar editar contacto segun las reglas aprobadas por negocio.
 
-### CA-008 - Validar alcance: Desactivar contacto
+### CA-009 - Validar alcance: Desactivar contacto
 
 Dado que el alcance de la HU incluye desactivar contacto  
 Cuando el usuario ejecuta el flujo correspondiente  
 Entonces el sistema permite validar desactivar contacto segun las reglas aprobadas por negocio.
 
-### CA-009 - Validar alcance: Consulta básica
+### CA-010 - Validar alcance: Consulta básica
 
 Dado que el alcance de la HU incluye consulta básica  
 Cuando el usuario ejecuta el flujo correspondiente  
@@ -116,6 +123,11 @@ Entonces el sistema permite validar consulta básica segun las reglas aprobadas 
 - El alcance indicado incluye Editar contacto.
 - El alcance indicado incluye Desactivar contacto.
 - El alcance indicado incluye Consulta básica.
+- Los campos obligatorios iniciales para contacto son nombre, cargo, empresa asociada, correo o telefono al menos uno, fuente de contacto y estado opcional al inicio.
+- Un contacto debe estar asociado a una sola empresa en el MVP.
+- No se permite que un contacto pertenezca a dos o mas empresas al mismo tiempo.
+- El correo corporativo y el correo personal deben distinguirse por dominio.
+- El contacto puede existir sin estado obligatorio al inicio si el negocio lo permite por configuracion.
 
 ### Reglas pendientes de validacion
 

@@ -43,7 +43,7 @@ Para mantener trazabilidad y control funcional dentro de Nexus CRM.
 
 ## Contexto funcional
 
-La HU HU006 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Administrar empresas'. La version enriquecida conserva la intencion original leida desde Azure DevOps y agrega criterios verificables para refinamiento, QA y validacion de negocio.
+La HU HU006 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Administrar empresas'. La version enriquecida conserva la intencion original leida desde Azure DevOps y agrega criterios verificables para refinamiento, QA y validacion de negocio. El estado `Sin seguimiento` es la denominacion formal en el sistema y su umbral es parametrizable por Gerencia.
 
 ## Criterios de aceptacion
 
@@ -67,38 +67,45 @@ Cuando omite informacion obligatoria o ingresa datos invalidos
 Entonces el sistema no completa la operacion  
 Y muestra las validaciones correspondientes.
 
-### CA-004 - Restringir usuario sin permiso
+### CA-004 - Estado parametrizable por negocio
+
+Dado que Gerencia configura los parametros de seguimiento de una empresa  
+Cuando define el tiempo para pasar a estado `Sin seguimiento` o marca una empresa como `Prioritaria`  
+Entonces el sistema debe guardar la configuracion aplicada  
+Y reflejar el estado correspondiente segun la regla definida por negocio.
+
+### CA-005 - Restringir usuario sin permiso
 
 Dado que un usuario no autorizado intenta administrar empresas  
 Cuando solicita la accion  
 Entonces el sistema bloquea la operacion  
 Y muestra un mensaje de permiso insuficiente.
 
-### CA-005 - Mantener trazabilidad
+### CA-006 - Mantener trazabilidad
 
 Dado que la operacion administrar empresas se completa correctamente  
 Cuando el sistema guarda el resultado  
 Entonces registra la informacion necesaria para trazabilidad funcional o auditoria si negocio lo confirma.
 
-### CA-006 - Validar alcance: Crear empresa
+### CA-007 - Validar alcance: Crear empresa
 
 Dado que el alcance de la HU incluye crear empresa  
 Cuando el usuario ejecuta el flujo correspondiente  
 Entonces el sistema permite validar crear empresa segun las reglas aprobadas por negocio.
 
-### CA-007 - Validar alcance: Editar empresa
+### CA-008 - Validar alcance: Editar empresa
 
 Dado que el alcance de la HU incluye editar empresa  
 Cuando el usuario ejecuta el flujo correspondiente  
 Entonces el sistema permite validar editar empresa segun las reglas aprobadas por negocio.
 
-### CA-008 - Validar alcance: Desactivar empresa
+### CA-009 - Validar alcance: Desactivar empresa
 
 Dado que el alcance de la HU incluye desactivar empresa  
 Cuando el usuario ejecuta el flujo correspondiente  
 Entonces el sistema permite validar desactivar empresa segun las reglas aprobadas por negocio.
 
-### CA-009 - Validar alcance: Validaciones básicas
+### CA-010 - Validar alcance: Validaciones básicas
 
 Dado que el alcance de la HU incluye validaciones básicas  
 Cuando el usuario ejecuta el flujo correspondiente  
@@ -116,6 +123,11 @@ Entonces el sistema permite validar validaciones básicas segun las reglas aprob
 - El alcance indicado incluye Editar empresa.
 - El alcance indicado incluye Desactivar empresa.
 - El alcance indicado incluye Validaciones básicas.
+- Los campos obligatorios iniciales para empresa son nombre, sector, estado, fuente de origen y responsable comercial.
+- Los estados de empresa confirmados son Activa, Inactiva, Sin seguimiento y Prioritaria.
+- `Sin seguimiento` es el termino formal del sistema y su calculo es parametrizable por Gerencia.
+- Para el MVP, el umbral inicial de `Sin seguimiento` puede ser 30 dias sin actividad.
+- `Prioritaria` es un estado o flag configurable por negocio y no debe quemarse como valor fijo.
 
 ### Reglas pendientes de validacion
 

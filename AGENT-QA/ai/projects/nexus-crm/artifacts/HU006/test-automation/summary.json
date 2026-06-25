@@ -1,0 +1,10 @@
+{
+  "hu_id": "HU006",
+  "artifact_type": "test-automation",
+  "latest_version": "v1",
+  "latest_framework": "playwright-typescript",
+  "latest_path": "v1/playwright-typescript",
+  "versions": ["v1"],
+  "status": "Generado con placeholders pendientes",
+  "execution_guard": "RUN_E2E=true"
+}

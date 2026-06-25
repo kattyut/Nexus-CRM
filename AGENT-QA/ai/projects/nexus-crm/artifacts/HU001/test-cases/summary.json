@@ -1,0 +1,10 @@
+{
+  "hu_id": "HU001",
+  "artifact_type": "test-cases",
+  "latest_version": "v1",
+  "versions": ["v1"],
+  "latest_file": "v1/test-cases.md",
+  "case_count": 8,
+  "methodology_id": "basado_cobertura",
+  "status": "Pendiente de aprobacion"
+}

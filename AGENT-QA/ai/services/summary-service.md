@@ -86,3 +86,22 @@ ai/projects/{project-slug}/artifacts/global/summary.json
 - Cuando se cree un analisis, actualizar `artifacts.analysis.latest_version`, `path`, `status`, `sufficiency_status` y `updated_at` en el summary raiz de la HU.
 - Cada `analysis/vN/summary.json` debe resumir estado inicial, suficiencia, hallazgos, riesgos y siguiente paso.
 - Registrar lecturas fallidas de herramientas externas como eventos bloqueados, sin generar artefactos QA sustitutos.
+
+---
+
+# Summary de automatizacion ejecutable
+
+Cuando se genere automatizacion, actualizar el summary raiz de la HU con:
+
+- `automation_generated`
+- `framework`
+- `framework_version`
+- `automation_version`
+- `generated_at`
+- `artifacts.test_automation.latest_version`
+- `artifacts.test_automation.path`
+- `artifacts.test_automation.latest_path`
+- `artifacts.test_automation.status`
+- `artifacts.test_automation.framework`
+
+Tambien registrar las versiones fuente usadas: HU enriquecida, plan de pruebas y casos de prueba.

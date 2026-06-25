@@ -1,0 +1,17 @@
+{
+  "name": "nexus-crm-hu005-playwright",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automatizacion Playwright TypeScript generada para HU005 - Asignar/restringir roles.",
+  "scripts": {
+    "postinstall": "playwright install chromium",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "typescript": "^5.5.0"
+  }
+}

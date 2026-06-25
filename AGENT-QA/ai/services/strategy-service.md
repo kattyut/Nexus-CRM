@@ -80,3 +80,32 @@ ai/config/
 - Si el usuario pide opciones, mostrar `id`, `name`, `summary`, `preview`.
 - Si una estrategia/metodologia no existe, mostrar opciones y preguntar de nuevo.
 - No aplicar default sin aprobacion.
+
+---
+
+# Automatizacion ejecutable
+
+El servicio tambien debe resolver frameworks desde:
+
+```text
+ai/config/automation-options/automation-catalog.json
+```
+
+Debe validar:
+
+- `default_framework` y `default_framework_id`;
+- `framework_id`;
+- `framework_name`;
+- `framework_type`;
+- `rule_file`;
+- `templates_path` cuando el framework use plantillas;
+- `output_path` con placeholders `{project_slug}`, `{story_id}` y `{version}`;
+- comando de ejecucion y dependencias.
+
+Para `playwright-typescript`, el `templates_path` oficial es:
+
+```text
+ai/config/automation-templates/playwright-typescript
+```
+
+El servicio no debe generar archivos ni persistir artefactos; solo resuelve y valida la estrategia tecnica seleccionada.

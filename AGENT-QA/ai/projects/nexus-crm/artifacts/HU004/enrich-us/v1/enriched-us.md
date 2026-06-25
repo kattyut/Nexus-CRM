@@ -30,32 +30,32 @@
 
 ## Historia original
 
-Como administrador  
+Como usuario de Gerencia  
 Quiero crear, modificar y configurar roles junto con sus permisos asociados  
 Para controlar qué funcionalidades puede utilizar cada tipo de usuario dentro del sistema.
 
 ## Historia enriquecida
 
-Como administrador  
+Como usuario de Gerencia  
 Quiero crear, modificar y configurar roles junto con sus permisos asociados  
 Para controlar qué funcionalidades puede utilizar cada tipo de usuario dentro del sistema.  
 Para mantener trazabilidad y control funcional dentro de Nexus CRM.
 
 ## Contexto funcional
 
-La HU HU004 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Administrar roles'. La version enriquecida conserva la intencion original leida desde Azure DevOps y agrega criterios verificables para refinamiento, QA y validacion de negocio.
+La HU HU004 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Administrar roles'. La administracion de roles queda reservada al rol Gerencia, que actua como super admin del sistema. No existe un rol Administrador separado en Nexus CRM.
 
 ## Criterios de aceptacion
 
 ### CA-001 - Acceso a la funcionalidad
 
-Dado que el usuario autorizado accede a Nexus CRM  
+Dados que un usuario con rol Gerencia accede a Nexus CRM  
 Cuando solicita administrar roles  
 Entonces el sistema presenta la funcionalidad disponible segun sus permisos.
 
 ### CA-002 - Ejecutar operacion principal
 
-Dado que el usuario cuenta con permisos suficientes  
+Dados que el usuario cuenta con rol Gerencia  
 Cuando completa la informacion requerida para administrar roles  
 Entonces el sistema procesa la operacion  
 Y confirma el resultado de forma clara.
@@ -69,7 +69,7 @@ Y muestra las validaciones correspondientes.
 
 ### CA-004 - Restringir usuario sin permiso
 
-Dado que un usuario no autorizado intenta administrar roles  
+Dados que un usuario con rol Comercial o Analista intenta administrar roles  
 Cuando solicita la accion  
 Entonces el sistema bloquea la operacion  
 Y muestra un mensaje de permiso insuficiente.
@@ -117,11 +117,17 @@ Entonces el sistema permite validar consultar roles segun las reglas aprobadas p
 - El alcance indicado incluye Configurar permisos.
 - El alcance indicado incluye Consultar roles.
 - El alcance indicado incluye Desactivar roles.
+- Solo Gerencia puede crear, modificar, consultar, configurar o desactivar roles.
+- No existe un rol Administrador separado para Nexus CRM.
+- Los roles confirmados del sistema son Gerencia, Comercial y Analista.
+- Gerencia actua como super admin y tiene todos los permisos.
+- Comercial tiene acceso limitado a funcionalidades esenciales para el cargo comercial.
+- Analista tiene permisos orientados a carga/importacion de datos y validacion operativa de informacion importada; no debe acceder a dashboards ni insights.
 
 ### Reglas pendientes de validacion
 
 - Confirmar criterios de aceptacion definitivos con negocio.
-- Confirmar reglas de permisos y perfiles autorizados.
+- Confirmar matriz detallada de permisos por modulo.
 - Confirmar campos obligatorios, validaciones y mensajes esperados.
 - Confirmar excepciones funcionales y escenarios negativos.
 - Confirmar si se requiere auditoria o historial de cambios.

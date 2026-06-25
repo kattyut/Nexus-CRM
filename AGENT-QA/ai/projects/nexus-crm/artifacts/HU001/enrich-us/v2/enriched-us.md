@@ -51,7 +51,7 @@ Para acceder unicamente a las funcionalidades autorizadas de Nexus CRM y protege
 
 ## Contexto funcional
 
-La autenticacion es parte del modulo de Seguridad y acceso del MVP de Nexus CRM. Esta HU habilita el ingreso controlado de usuarios internos como administrador, comercial, gerencial o analista. El objetivo funcional es permitir acceso al sistema solo a usuarios validos y ofrecer salida segura mediante cierre de sesion. La HU debe conservar trazabilidad con el Work Item 433 de Azure DevOps.
+La autenticacion es parte del modulo de Seguridad y acceso del MVP de Nexus CRM. Esta HU habilita el ingreso controlado de usuarios internos con roles Gerencia, Comercial o Analista. Gerencia actua como super admin del sistema. El objetivo funcional es permitir acceso al sistema solo a usuarios validos y ofrecer salida segura mediante cierre de sesion. La HU debe conservar trazabilidad con el Work Item 433 de Azure DevOps.
 
 ## Alcance funcional enriquecido
 
@@ -62,13 +62,13 @@ Incluye:
 - Manejo de sesion activa.
 - Cierre de sesion.
 - Mensajes basicos ante errores de autenticacion.
+- Bloqueo temporal por intentos fallidos.
 - Restriccion de acceso a funcionalidades no autorizadas, segun reglas de permisos que deben ser confirmadas.
 
 No incluye, salvo confirmacion del negocio:
 
 - Recuperacion de contrasena.
 - Autenticacion multifactor.
-- Bloqueo por intentos fallidos.
 - Administracion completa de roles y permisos.
 - Registro detallado de auditoria de accesos.
 
@@ -123,6 +123,13 @@ Cuando el usuario intenta continuar usando el sistema
 Entonces el sistema debe impedir la operacion protegida  
 Y debe solicitar un nuevo inicio de sesion.
 
+### CA-008 - Bloqueo por intentos fallidos
+
+Dado que un usuario intenta iniciar sesion con credenciales invalidas  
+Cuando acumula 5 intentos fallidos consecutivos  
+Entonces el sistema debe bloquear temporalmente nuevos intentos de inicio de sesion para esa cuenta durante 15 minutos  
+Y debe mostrar un mensaje de bloqueo sin exponer informacion sensible.
+
 ## Reglas de negocio
 
 - La autenticacion aplica a usuarios internos del CRM.
@@ -130,9 +137,16 @@ Y debe solicitar un nuevo inicio de sesion.
 - El sistema debe permitir cerrar sesion cuando exista una sesion activa.
 - El sistema debe impedir acceso a areas protegidas cuando no exista sesion activa valida.
 - Los mensajes de error de autenticacion deben ser basicos y no deben exponer informacion sensible.
-- Las funcionalidades autorizadas dependen de roles o permisos; la matriz exacta de permisos esta pendiente de definicion.
+- Los roles confirmados para Nexus CRM son Gerencia, Comercial y Analista.
+- No existe un rol Administrador separado.
+- Gerencia actua como super admin y tiene todos los permisos del sistema.
+- Comercial tiene acceso limitado a funcionalidades esenciales para su cargo.
+- Analista tiene permisos orientados a carga de datos, importacion de Excel y validacion operativa de datos importados; no debe acceder a dashboards ni insights.
+- El sistema debe bloquear temporalmente la cuenta durante 15 minutos cuando se acumulen 5 intentos fallidos consecutivos.
+- Las funcionalidades autorizadas dependen de roles o permisos; la matriz detallada de permisos por modulo esta pendiente de definicion.
 - La politica de expiracion de sesion esta pendiente de definicion.
-- Las reglas de bloqueo por intentos fallidos, MFA y recuperacion de contrasena no estan confirmadas para esta HU.
+- MFA no esta confirmado para el MVP.
+- Recuperacion de contrasena se gestiona en HU002.
 
 ## Dependencias
 
@@ -140,7 +154,7 @@ Dependencias documentadas:
 
 - Modulo de Seguridad y acceso.
 - Usuarios internos del CRM.
-- Definicion de roles o permisos para administrador, comercial, gerencial y analista.
+- Definicion de roles o permisos para Gerencia, Comercial y Analista.
 
 Dependencias pendientes de confirmar:
 
@@ -153,14 +167,12 @@ Dependencias pendientes de confirmar:
 
 ## Supuestos y dudas
 
-- Supuesto: los roles identificados para el CRM son administrador, comercial, gerencial y analista, porque estan registrados en el contexto de negocio.
+- Regla confirmada: los roles del CRM son Gerencia, Comercial y Analista.
 - Supuesto: esta HU cubre login, logout, validacion de credenciales, manejo de sesion y mensajes basicos, porque ese alcance viene de Azure DevOps.
-- Pendiente de validacion: confirmar si bloqueo por intentos fallidos pertenece a esta HU o a una HU posterior.
-- Pendiente de validacion: confirmar si recuperacion de contrasena pertenece a esta HU o a una HU posterior.
 - Pendiente de validacion: confirmar si MFA pertenece al MVP.
 - Pendiente de validacion: definir mensajes exactos para credenciales invalidas, campos requeridos, usuario inactivo y sesion expirada.
 - Duda funcional: cual es la pantalla destino luego de un login exitoso.
-- Duda funcional: que funcionalidades iniciales puede ver cada rol.
+- Duda funcional: que funcionalidades iniciales puede ver Comercial sobre empresas/contactos, porque la regla de visibilidad todavia requiere refinamiento.
 
 ## Riesgos QA
 
@@ -172,5 +184,4 @@ Dependencias pendientes de confirmar:
 
 ## Validacion QA posterior
 
-El enriquecimiento mejora claridad, estructura y testeabilidad de la HU, pero mantiene pendientes los puntos no confirmados. No debe sincronizarse con Azure DevOps como definicion final hasta que negocio confirme roles, permisos, politica de sesion y mensajes esperados.
-
+El enriquecimiento mejora claridad, estructura y testeabilidad de la HU. Ya quedan confirmados los roles base, el alcance de Gerencia como super admin y el bloqueo por 5 intentos fallidos durante 15 minutos. No debe sincronizarse con Azure DevOps como definicion final hasta que negocio confirme matriz detallada de permisos, politica de sesion y mensajes esperados.

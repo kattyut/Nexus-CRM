@@ -33,10 +33,9 @@ El sistema esta orientado principalmente a:
 
 | Usuario | Necesidad principal |
 |---|---|
-| Gerencia | Visualizacion de metricas, dashboards, insights e indicadores comerciales para toma de decisiones. |
+| Gerencia | Visualizacion de metricas, dashboards, insights e indicadores comerciales para toma de decisiones; tambien configuracion del sistema, permisos, usuarios y administracion general como super admin. |
 | Equipo comercial | Gestion de empresas, contactos, actividades y seguimiento comercial. |
 | Analistas | Validacion de informacion, revision de calidad de datos, duplicados y seguimiento operativo. |
-| Administrador | Configuracion del sistema, permisos, usuarios y administracion general. |
 
 ## Funcionalidades principales
 
@@ -220,6 +219,13 @@ Informacion relevante:
 - Ultima interaccion.
 - Actividad reciente.
 
+Reglas de negocio confirmadas:
+
+- El estado `Sin seguimiento` es el termino formal a usar en el sistema; no se usa `Abandonada` como estado principal.
+- El estado `Sin seguimiento` se calcula de forma parametrizable por Gerencia.
+- Para el MVP, el umbral inicial configurado puede ser 30 dias sin actividad.
+- El sistema puede manejar un estado adicional `Prioritaria` para empresas, tambien parametrizable.
+
 ### Contacto
 
 Representa personas asociadas a una empresa.
@@ -233,6 +239,13 @@ Informacion relevante:
 - Telefono.
 - Estado.
 - Fuente de contacto.
+
+Reglas de negocio confirmadas:
+
+- Un contacto debe estar asociado a una sola empresa en el MVP.
+- No se permite que un contacto pertenezca a dos o mas empresas al mismo tiempo.
+- El correo corporativo y el correo personal deben poder distinguirse por dominio.
+- El contacto puede existir sin estado obligatorio al inicio, si el negocio lo permite por configuracion.
 
 ### Actividad comercial
 
@@ -262,10 +275,16 @@ Representa los usuarios internos del CRM.
 
 Tipos identificados:
 
-- Administrador.
+- Gerencia.
 - Comercial.
-- Gerencial.
 - Analista.
+
+Reglas confirmadas:
+
+- No existe un rol Administrador separado para Nexus CRM.
+- Gerencia actua como super admin del sistema y tiene todos los permisos.
+- Comercial tiene acceso limitado a las funcionalidades esenciales para su cargo comercial.
+- Analista se enfoca en carga de datos, importacion de Excel y actividades necesarias para validar datos importados; no requiere acceso a dashboards, insights ni funciones gerenciales.
 
 ## Flujo funcional principal validado
 

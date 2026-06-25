@@ -84,3 +84,28 @@ ai/projects/{project-slug}/
 - Registrar cambios en `summary-service.md`.
 - Registrar eventos en `logging-service.md`.
 - Bloquear cualquier persistencia que intente escribir artefactos QA fuera de `ai/projects/{project-slug}/artifacts/`.
+
+---
+
+# Automatizacion ejecutable
+
+Para automatizacion QA ejecutable, guardar siempre bajo:
+
+```text
+ai/projects/{project-slug}/artifacts/{hu-id}/test-automation/vN/{framework_id}/
+```
+
+Para Playwright TypeScript, la version debe contener como minimo:
+
+```text
+package.json
+playwright.config.ts
+tests/
+pages/
+fixtures/
+utils/
+README.md
+metadata.json
+```
+
+No guardar proyectos de automatizacion en la raiz, en `projects/{project_slug}/automation/` ni fuera de `artifacts/{hu-id}/test-automation/`.

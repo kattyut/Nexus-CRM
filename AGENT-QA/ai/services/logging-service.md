@@ -82,6 +82,10 @@ Debe registrar:
 - generacion de prompts
 - persistencia aprobada
 - sincronizacion aprobada con herramientas externas
+- generacion de automatizacion ejecutable
+- framework de automatizacion seleccionado
+- templates de automatizacion utilizados
+- ruta de salida de automatizacion
 
 ---
 

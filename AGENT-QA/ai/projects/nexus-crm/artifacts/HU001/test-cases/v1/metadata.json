@@ -1,0 +1,18 @@
+{
+  "project": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU001",
+  "title": "Gestionar autenticacion de usuarios",
+  "source": "Azure DevOps",
+  "base_version": "enrich-us/v2",
+  "test_plan_base": "test-plan/v1",
+  "artifact_type": "test-cases",
+  "version": "v1",
+  "methodology": {
+    "id": "basado_cobertura",
+    "name": "Basado en Cobertura"
+  },
+  "priority": 2,
+  "case_count": 8,
+  "status": "Pendiente de aprobacion"
+}

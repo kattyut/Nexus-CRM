@@ -1,0 +1,17 @@
+{
+  "project": "Nexus CRM",
+  "project_slug": "nexus-crm",
+  "hu_id": "HU002",
+  "title": "Recuperar acceso a la cuenta",
+  "source": "Azure DevOps",
+  "base_version": "enrich-us/v2",
+  "artifact_type": "test-plan",
+  "version": "v1",
+  "methodology": {
+    "id": "basado_cobertura",
+    "name": "Basado en Cobertura",
+    "rule_file": "ai/config/qa-testplan-options/basado-cobertura.md"
+  },
+  "priority": 2,
+  "status": "Pendiente de aprobacion"
+}

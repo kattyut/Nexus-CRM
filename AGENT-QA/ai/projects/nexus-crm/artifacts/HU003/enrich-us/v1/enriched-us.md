@@ -30,32 +30,32 @@
 
 ## Historia original
 
-Como administrador  
+Como usuario de Gerencia  
 Quiero crear, consultar, editar, activar y desactivar usuarios  
 Para gestionar el acceso al sistema.
 
 ## Historia enriquecida
 
-Como administrador  
+Como usuario de Gerencia  
 Quiero crear, consultar, editar, activar y desactivar usuarios  
 Para gestionar el acceso al sistema.  
 Para mantener trazabilidad y control funcional dentro de Nexus CRM.
 
 ## Contexto funcional
 
-La HU HU003 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Administrar usuarios'. La version enriquecida conserva la intencion original leida desde Azure DevOps y agrega criterios verificables para refinamiento, QA y validacion de negocio.
+La HU HU003 pertenece al backlog funcional de Nexus CRM y cubre la capacidad 'Administrar usuarios'. La administracion de usuarios queda reservada al rol Gerencia, que actua como super admin del sistema. No existe un rol Administrador separado en Nexus CRM.
 
 ## Criterios de aceptacion
 
 ### CA-001 - Acceso a la funcionalidad
 
-Dado que el usuario autorizado accede a Nexus CRM  
+Dados que un usuario con rol Gerencia accede a Nexus CRM  
 Cuando solicita administrar usuarios  
 Entonces el sistema presenta la funcionalidad disponible segun sus permisos.
 
 ### CA-002 - Ejecutar operacion principal
 
-Dado que el usuario cuenta con permisos suficientes  
+Dados que el usuario cuenta con rol Gerencia  
 Cuando completa la informacion requerida para administrar usuarios  
 Entonces el sistema procesa la operacion  
 Y confirma el resultado de forma clara.
@@ -69,7 +69,7 @@ Y muestra las validaciones correspondientes.
 
 ### CA-004 - Restringir usuario sin permiso
 
-Dado que un usuario no autorizado intenta administrar usuarios  
+Dados que un usuario con rol Comercial o Analista intenta administrar usuarios  
 Cuando solicita la accion  
 Entonces el sistema bloquea la operacion  
 Y muestra un mensaje de permiso insuficiente.
@@ -94,11 +94,14 @@ Entonces el sistema permite validar administrar usuarios segun las reglas aproba
 - El titulo funcional es HU003 - Administrar usuarios.
 - El estado actual en Azure DevOps es New.
 - La HU debe mantener trazabilidad con el proyecto Nexus.
+- Solo Gerencia puede crear, consultar, editar, activar y desactivar usuarios.
+- No existe un rol Administrador separado para Nexus CRM.
+- Gerencia actua como super admin del sistema.
+- Comercial y Analista no pueden administrar usuarios.
 
 ### Reglas pendientes de validacion
 
 - Confirmar criterios de aceptacion definitivos con negocio.
-- Confirmar reglas de permisos y perfiles autorizados.
 - Confirmar campos obligatorios, validaciones y mensajes esperados.
 - Confirmar excepciones funcionales y escenarios negativos.
 - Confirmar si se requiere auditoria o historial de cambios.

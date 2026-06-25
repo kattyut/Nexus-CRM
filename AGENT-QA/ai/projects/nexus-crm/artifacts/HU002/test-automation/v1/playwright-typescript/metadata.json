@@ -1,0 +1,20 @@
+{
+  "artifact_type": "test-automation",
+  "automation_generated": true,
+  "framework": "playwright-typescript",
+  "framework_name": "Playwright + TypeScript",
+  "framework_version": "catalog:1.1.0",
+  "automation_version": "v1",
+  "latest": true,
+  "project_slug": "nexus-crm",
+  "hu_id": "HU002",
+  "source_versions": {
+    "enrich_us": "v2",
+    "test_plan": "v1",
+    "test_cases": "v1"
+  },
+  "generated_at": "2026-06-25T08:55:00-05:00",
+  "generated_by": "generate-test-automation",
+  "execution_guard": "RUN_E2E=true",
+  "pending": ["BASE_URL", "RECOVERY_PATH", "controlled inbox", "OTP test data", "real selectors"]
+}

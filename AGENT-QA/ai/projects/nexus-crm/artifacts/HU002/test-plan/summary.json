@@ -1,0 +1,9 @@
+{
+  "hu_id": "HU002",
+  "artifact_type": "test-plan",
+  "latest_version": "v1",
+  "versions": ["v1"],
+  "latest_file": "v1/test-plan.md",
+  "methodology_id": "basado_cobertura",
+  "status": "Pendiente de aprobacion"
+}

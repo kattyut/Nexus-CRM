@@ -67,32 +67,39 @@ Cuando omite informacion obligatoria o ingresa datos invalidos
 Entonces el sistema no completa la operacion  
 Y muestra las validaciones correspondientes.
 
-### CA-004 - Restringir usuario sin permiso
+### CA-004 - Impedir multiples empresas por contacto
+
+Dado que un usuario intenta asociar un contacto existente a una segunda empresa  
+Cuando el sistema valida la relacion propuesta  
+Entonces debe impedir la asociacion multiple en el MVP  
+Y debe mostrar un mensaje que indique que cada contacto solo puede estar asociado a una empresa.
+
+### CA-005 - Restringir usuario sin permiso
 
 Dado que un usuario no autorizado intenta asociar contactos a empresas  
 Cuando solicita la accion  
 Entonces el sistema bloquea la operacion  
 Y muestra un mensaje de permiso insuficiente.
 
-### CA-005 - Mantener trazabilidad
+### CA-006 - Mantener trazabilidad
 
 Dado que la operacion asociar contactos a empresas se completa correctamente  
 Cuando el sistema guarda el resultado  
 Entonces registra la informacion necesaria para trazabilidad funcional o auditoria si negocio lo confirma.
 
-### CA-006 - Validar alcance: Asociar
+### CA-007 - Validar alcance: Asociar
 
 Dado que el alcance de la HU incluye asociar  
 Cuando el usuario ejecuta el flujo correspondiente  
 Entonces el sistema permite validar asociar segun las reglas aprobadas por negocio.
 
-### CA-007 - Validar alcance: Consultar asociados
+### CA-008 - Validar alcance: Consultar asociados
 
 Dado que el alcance de la HU incluye consultar asociados  
 Cuando el usuario ejecuta el flujo correspondiente  
 Entonces el sistema permite validar consultar asociados segun las reglas aprobadas por negocio.
 
-### CA-008 - Validar alcance: Visualizar relaciones
+### CA-009 - Validar alcance: Visualizar relaciones
 
 Dado que el alcance de la HU incluye visualizar relaciones  
 Cuando el usuario ejecuta el flujo correspondiente  
@@ -109,6 +116,9 @@ Entonces el sistema permite validar visualizar relaciones segun las reglas aprob
 - El alcance indicado incluye Asociar.
 - El alcance indicado incluye Consultar asociados.
 - El alcance indicado incluye Visualizar relaciones.
+- Un contacto debe estar asociado a una sola empresa en el MVP.
+- No se permite asociar un contacto a dos o mas empresas al mismo tiempo.
+- Si el negocio necesita reubicacion, debe tratarse como reasignacion y no como asociacion multiple simultanea.
 
 ### Reglas pendientes de validacion
 

@@ -42,7 +42,7 @@ Para poder restablecer mis credenciales y volver a ingresar al CRM cuando no rec
 
 ## Contexto funcional
 
-La HU permite que un usuario del CRM inicie un flujo de recuperacion desde el inicio de sesion cuando no recuerda su contrasena. La solicitud se realiza usando correo electronico y debe conservar seguridad, trazabilidad y mensajes que no expongan informacion sensible. El mecanismo exacto de recuperacion no esta confirmado en Azure DevOps, por lo que se deja como pendiente si sera enlace, codigo o token.
+La HU permite que un usuario del CRM inicie un flujo de recuperacion desde el inicio de sesion cuando no recuerda su contrasena. La solicitud se realiza usando correo electronico y debe conservar seguridad, trazabilidad y mensajes que no expongan informacion sensible. El mecanismo confirmado por negocio para el MVP es codigo OTP enviado por correo electronico, con vigencia de 30 minutos.
 
 ## Criterios de aceptacion
 
@@ -52,7 +52,7 @@ Dado que el usuario se encuentra en la pantalla de inicio de sesion
 Y selecciona la opcion de recuperacion de acceso  
 Cuando ingresa un correo electronico registrado y solicita recuperar su cuenta  
 Entonces el sistema registra la solicitud de recuperacion  
-Y envia las instrucciones de recuperacion al correo registrado segun el mecanismo confirmado por negocio.
+Y envia un codigo OTP al correo registrado.
 
 ### CA-002 - Solicitud con correo no registrado
 
@@ -63,15 +63,15 @@ Y no revela si el correo existe o no existe en el CRM.
 
 ### CA-003 - Recuperacion con mecanismo valido
 
-Dado que el usuario recibio las instrucciones de recuperacion en su correo  
-Y el mecanismo de recuperacion sigue vigente segun la regla confirmada por negocio  
+Dados que el usuario recibio un codigo OTP en su correo  
+Y el codigo OTP sigue vigente  
 Cuando completa el flujo de restablecimiento de credenciales correctamente  
 Entonces el sistema permite definir una nueva contrasena  
 Y confirma que el acceso fue restablecido.
 
 ### CA-004 - Mecanismo de recuperacion vencido o invalido
 
-Dado que el usuario intenta usar un mecanismo de recuperacion vencido, invalido o ya utilizado  
+Dado que el usuario intenta usar un codigo OTP vencido, invalido o ya utilizado  
 Cuando intenta continuar con el restablecimiento de credenciales  
 Entonces el sistema no permite cambiar la contrasena  
 Y muestra un mensaje de error que permita solicitar una nueva recuperacion sin exponer informacion sensible.
@@ -95,19 +95,19 @@ Y conserva trazabilidad operativa del intento para revision tecnica o soporte.
 ### Reglas confirmadas por HU o contexto
 
 - La recuperacion de acceso debe realizarse mediante correo electronico.
+- El mecanismo de recuperacion confirmado para el MVP es codigo OTP enviado por correo electronico.
+- El codigo OTP debe tener una vigencia de 30 minutos.
+- El codigo OTP debe ser temporal y debe invalidarse cuando sea usado correctamente.
 - El usuario objetivo es un usuario del sistema CRM.
 - El objetivo funcional es restablecer acceso cuando el usuario no recuerda sus credenciales.
 - La funcionalidad pertenece al modulo de seguridad y acceso de Nexus CRM.
 
 ### Reglas pendientes de validacion
 
-- Confirmar si el mecanismo de recuperacion sera enlace, codigo, token u otro metodo.
-- Confirmar vigencia del mecanismo de recuperacion.
-- Confirmar si el mecanismo sera de un solo uso.
 - Confirmar politica de contrasena vigente para el restablecimiento.
 - Confirmar comportamiento para usuarios inactivos, bloqueados o sin correo verificado.
 - Confirmar limite de solicitudes permitidas por usuario, correo, IP o periodo de tiempo.
-- Confirmar mensajes exactos para correo registrado, correo no registrado, mecanismo invalido, mecanismo vencido y falla de correo.
+- Confirmar mensajes exactos para correo registrado, correo no registrado, OTP invalido, OTP vencido y falla de correo.
 - Confirmar si se requiere auditoria o notificacion adicional ante recuperaciones exitosas.
 
 ## Dependencias
@@ -115,14 +115,14 @@ Y conserva trazabilidad operativa del intento para revision tecnica o soporte.
 - Pantalla o componente de inicio de sesion con opcion de recuperacion de acceso.
 - Formulario para ingresar correo electronico.
 - Servicio o proceso de envio de correo electronico.
-- Mecanismo backend para generar y validar la recuperacion de acceso.
+- Mecanismo backend para generar, enviar, validar e invalidar codigos OTP.
 - Formulario seguro para definir nueva contrasena.
 - Politica de contrasena definida para el sistema.
 - Ambiente de pruebas con cuentas y correos controlados.
 
 ## Supuestos y dudas
 
-- Pendiente de validacion: el flujo exacto posterior al correo todavia no esta documentado en Azure DevOps.
+- Regla confirmada: el flujo posterior al correo usa codigo OTP con vigencia de 30 minutos.
 - Pendiente de validacion: no existe criterio de aceptacion original en el campo correspondiente de Azure DevOps.
 - Pendiente de validacion: no estan definidos proveedor de correo, plantilla, remitente ni manejo de rebotes.
 - Pendiente de validacion: no esta definido si el mensaje para correo no registrado debe ser exactamente el mismo que para correo registrado.
@@ -131,8 +131,8 @@ Y conserva trazabilidad operativa del intento para revision tecnica o soporte.
 ## Riesgos QA
 
 - Riesgo de seguridad si el flujo permite enumerar cuentas mediante mensajes distintos.
-- Riesgo de acceso indebido si no se define vigencia, uso unico o invalidacion del mecanismo de recuperacion.
-- Riesgo de cobertura incompleta si se generan casos definitivos sin confirmar reglas de contrasena, correo y expiracion.
+- Riesgo de acceso indebido si no se implementa correctamente la expiracion e invalidacion del OTP.
+- Riesgo de cobertura incompleta si se generan casos definitivos sin confirmar reglas de contrasena y correo.
 - Riesgo de bloqueo E2E si el ambiente de pruebas no cuenta con servicio de correo o inbox controlado.
 - Riesgo de inconsistencias UX si los mensajes de error y exito no se definen antes del desarrollo.
 

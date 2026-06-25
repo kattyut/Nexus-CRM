@@ -224,6 +224,29 @@ Debe validar:
 
 ---
 
+# Validacion de automatizacion ejecutable
+
+Debe validar:
+
+- existencia de HU enriquecida;
+- existencia de plan de pruebas;
+- existencia de casos de prueba;
+- existencia de `summary.json` de la HU cuando aplique;
+- framework presente en `ai/config/automation-options/automation-catalog.json`;
+- `rule_file` existente;
+- `templates_path` existente para frameworks basados en templates;
+- ruta de salida bajo `ai/projects/{project-slug}/artifacts/{hu-id}/test-automation/vN/{framework_id}/`;
+- archivos minimos para Playwright TypeScript: `package.json`, `playwright.config.ts`, `tests/`, `pages/`, `fixtures/`, `utils/`, `README.md` y `metadata.json`;
+- `package.json` con script ejecutable;
+- metadata con `automation_generated`, `framework`, `framework_version`, `automation_version` y `generated_at`;
+- referencia `latest` en `summary.json` o `test-automation/latest.json` sin duplicar codigo generado;
+- ausencia de secretos hardcodeados;
+- no uso de rutas `.github/ai/...`.
+
+Si faltan casos automatizables o informacion critica para generar pasos verificables sin inventar, la validacion debe fallar con severidad `ERROR`.
+
+---
+
 # Validacion de estructura del proyecto
 
 Debe validar existencia de:
