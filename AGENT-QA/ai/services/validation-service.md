@@ -239,8 +239,15 @@ Debe validar:
 - archivos minimos para Playwright TypeScript: `package.json`, `playwright.config.ts`, `tests/`, `pages/`, `fixtures/`, `utils/`, `README.md` y `metadata.json`;
 - `package.json` con script ejecutable;
 - metadata con `automation_generated`, `framework`, `framework_version`, `automation_version` y `generated_at`;
+- metadata con `automation_type` cuando se genere `playwright-ui`, `playwright-api` o `playwright-e2e`;
+- metadata API con `api_tests_generated`, `endpoints_covered`, `contract_validated` y `api_execution_status` cuando aplique;
+- contratos OpenAPI/Swagger existentes y parseables cuando se declare `contract_validated`;
+- pruebas API bajo `tests/api/` cuando el tipo sea `playwright-api`;
+- uso de locators segun `locator-service.md`;
+- datos de prueba separados segun `test-data-service.md`;
 - referencia `latest` en `summary.json` o `test-automation/latest.json` sin duplicar codigo generado;
 - ausencia de secretos hardcodeados;
+- ausencia de `waitForTimeout()` salvo justificacion documentada;
 - no uso de rutas `.github/ai/...`.
 
 Si faltan casos automatizables o informacion critica para generar pasos verificables sin inventar, la validacion debe fallar con severidad `ERROR`.

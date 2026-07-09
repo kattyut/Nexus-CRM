@@ -97,8 +97,12 @@ Debe validar:
 - `framework_id`;
 - `framework_name`;
 - `framework_type`;
+- `supported_types` con valores permitidos `playwright-ui`, `playwright-api` y `playwright-e2e` cuando aplique;
+- capacidades `supports_ui`, `supports_api`, `supports_page_object` y `supports_fixtures`;
+- capacidades API `api_contract_testing`, `http_validation`, `schema_validation` y `negative_testing`;
 - `rule_file`;
 - `templates_path` cuando el framework use plantillas;
+- templates declarados para UI, API, Page Object, fixtures, utils, README, config y package cuando el framework sea Playwright TypeScript;
 - `output_path` con placeholders `{project_slug}`, `{story_id}` y `{version}`;
 - comando de ejecucion y dependencias.
 
@@ -109,3 +113,15 @@ ai/config/automation-templates/playwright-typescript
 ```
 
 El servicio no debe generar archivos ni persistir artefactos; solo resuelve y valida la estrategia tecnica seleccionada.
+
+## Tipos Playwright
+
+Para `playwright-typescript`, el servicio debe permitir resolver:
+
+- `playwright-ui`: pruebas UI con Page Object, locators mantenibles y fixtures;
+- `playwright-api`: pruebas API con `request`, fixtures y assertions de respuesta;
+- `playwright-e2e`: pruebas que combinan UI, API y datos de prueba cuando los casos lo soporten.
+
+Si el tipo no puede inferirse desde los casos, usar `playwright-ui` como default y registrar el supuesto en metadata y logs.
+
+Para Fase 3, cuando exista contrato OpenAPI/Swagger, `playwright-api` debe validar que el framework soporte `api_contract_testing`, `http_validation`, `schema_validation` y `negative_testing`.

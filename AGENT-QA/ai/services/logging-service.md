@@ -83,9 +83,20 @@ Debe registrar:
 - persistencia aprobada
 - sincronizacion aprobada con herramientas externas
 - generacion de automatizacion ejecutable
+- ejecucion de automatizacion generada
 - framework de automatizacion seleccionado
+- tipo de automatizacion seleccionado: UI, API o E2E
 - templates de automatizacion utilizados
+- estrategia de locators aplicada
+- estrategia de datos de prueba aplicada
+- contrato Swagger/OpenAPI analizado
+- endpoints API encontrados
+- pruebas API generadas
+- errores de contrato API encontrados
 - ruta de salida de automatizacion
+- comandos ejecutados para automatizacion
+- resultados de ejecucion Playwright
+- rutas de evidencias de ejecucion
 
 ---
 

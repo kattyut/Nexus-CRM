@@ -78,8 +78,11 @@ Templates obligatorios:
 - `package.template.json`
 - `playwright.config.template.ts`
 - `page-object.template.ts`
-- `fixture.template.ts`
 - `spec.template.ts`
+- `api.spec.template.ts`
+- `fixture-data.template.json`
+- `test-data.template.ts`
+- `utils.template.ts`
 - `readme.template.md`
 
 ## PASO 6 - Delegar generacion
@@ -92,6 +95,10 @@ ai/skills/generate-test-automation.md
 
 El command no debe contener logica tecnica duplicada.
 
+El skill debe resolver si corresponde generar `playwright-ui`, `playwright-api` o `playwright-e2e`.
+
+Para automatizacion API basada en contrato, el skill debe delegar analisis a `api-analysis-service.md` y no duplicar parsing OpenAPI/Swagger dentro del command.
+
 ## PASO 7 - Persistencia
 
 Delegar a:
@@ -100,6 +107,10 @@ Delegar a:
 - `versioning-service.md`
 - `summary-service.md`
 - `logging-service.md`
+
+Si el usuario solicita validar la ejecucion, delegar despues de la generacion a:
+
+- `test-execution-service.md`
 
 Guardar bajo:
 
@@ -122,9 +133,26 @@ Si existe integracion Azure DevOps:
 Generar:
 
 - proyecto Playwright TypeScript completo;
+- Page Objects para UI/E2E;
+- fixtures de datos;
+- base API cuando el caso sea API;
+- analisis OpenAPI/Swagger cuando exista contrato;
+- pruebas API positivas y negativas cuando el contrato lo soporte;
 - archivos ejecutables;
 - metadata;
 - versionamiento;
 - summary actualizado;
 - logs de auditoria;
 - trazabilidad con HU, plan y casos.
+
+El usuario debe poder pedir:
+
+```text
+Genera automatizacion para MCA-1
+```
+
+El command debe resolver internamente:
+
+```text
+HU -> casos -> automatizacion -> proyecto Playwright
+```

@@ -8,7 +8,7 @@ Playwright + TypeScript
 
 # Objetivo
 
-Generar automatización moderna, mantenible, escalable y desacoplada para aplicaciones web y APIs utilizando Playwright con TypeScript.
+Generar automatizacion moderna, mantenible, escalable y desacoplada para aplicaciones web y APIs utilizando Playwright con TypeScript.
 
 ---
 
@@ -17,7 +17,7 @@ Generar automatización moderna, mantenible, escalable y desacoplada para aplica
 Este framework es ideal para:
 
 - pruebas E2E
-- automatización web
+- automatizacion web
 - frontend moderno
 - CI/CD
 - smoke testing
@@ -36,7 +36,7 @@ Este framework es ideal para:
 
 ---
 
-## Tipos de aplicación
+## Tipos de aplicacion
 
 - Web SPA
 - React
@@ -52,22 +52,25 @@ Este framework es ideal para:
 automation/
 
 - tests/
+- tests/ui/
+- tests/api/
+- tests/e2e/
 - pages/
 - fixtures/
+- reports/
 - utils/
-- config/
-- test-data/
-- evidence/
+- README.md
+- metadata.json
 
 ---
 
-# Niveles de generación soportados
+# Niveles de generacion soportados
 
 | Nivel | Estructura |
 |---|---|
-| básico | tests + test-data |
-| intermedio | pages + fixtures + tests |
-| avanzado | builders + config + environments + fixtures + pages + tests |
+| basico | package.json + playwright.config.ts + tests + fixtures + README |
+| intermedio | basico + pages + reports + Page Object Model |
+| avanzado | intermedio + utils + metadata completa + validacion de contrato API |
 
 ---
 
@@ -94,7 +97,7 @@ Usar:
 - expect(page).toHaveURL()
 - expect(locator).toContainText()
 
-Evitar assertions genéricas innecesarias.
+Evitar assertions genericas innecesarias.
 
 ---
 
@@ -110,21 +113,22 @@ Priorizar:
 Evitar:
 
 - xpath innecesario
-- selectores frágiles
-- índices dinámicos
+- selectores fragiles
+- indices dinamicos
 
 ---
 
 # Page Objects
 
-## Obligatorio en nivel intermedio y avanzado
+## Obligatorio para UI y E2E
 
-Las páginas deben:
+Las paginas deben:
 
 - encapsular selectores
 - encapsular acciones
-- evitar lógica duplicada
+- evitar logica duplicada
 - mantener nombres descriptivos
+- exponer metodos orientados a negocio, por ejemplo `createCompany(data)`
 
 ---
 
@@ -156,19 +160,12 @@ Ejemplos:
 
 ---
 
-## Fixtures
-
-Formato:
-
-{feature}.fixture.ts
-
----
-
 ## Data
 
 Formato:
 
-{story_id}.data.ts
+fixtures/{entity}.json
+fixtures/test-data.ts
 
 ---
 
@@ -178,12 +175,13 @@ Los datos deben:
 
 - separarse del test
 - evitar hardcoded values
-- soportar reutilización
-- permitir múltiples ambientes
+- soportar reutilizacion
+- permitir multiples ambientes
+- diferenciar datos validos e invalidos
 
 ---
 
-# Configuración de ambientes
+# Configuracion de ambientes
 
 Soportar:
 
@@ -209,16 +207,16 @@ El framework debe soportar:
 
 # Screenshots
 
-Tomar screenshot automático:
+Tomar screenshot automatico:
 
 - al fallar
-- opcionalmente en pasos críticos
+- opcionalmente en pasos criticos
 
 ---
 
 # Videos
 
-Permitir grabación:
+Permitir grabacion:
 
 - por test
 - por suite
@@ -231,7 +229,7 @@ Cada test debe mantener referencia a:
 
 - HU ID
 - test case ID
-- módulo funcional
+- modulo funcional
 
 ---
 
@@ -239,7 +237,7 @@ Cada test debe mantener referencia a:
 
 Evitar comentarios innecesarios.
 
-El código debe ser autoexplicativo.
+El codigo debe ser autoexplicativo.
 
 ---
 
@@ -247,28 +245,61 @@ El código debe ser autoexplicativo.
 
 SIEMPRE:
 
-- evitar duplicación
+- evitar duplicacion
 - reutilizar pages
 - reutilizar fixtures
-- separar configuración
+- reutilizar utils cuando aporten valor
+- separar configuracion
 - mantener estructura limpia
+
+---
+
+# Locator Strategy
+
+Aplicar `ai/services/locator-service.md`.
+
+Prioridad:
+
+1. `getByRole()`
+2. `getByTestId()`
+3. `getByLabel()`
+4. locator semantico controlado
+
+Evitar xpath, clases dinamicas, ids autogenerados y sleeps.
+
+---
+
+# Playwright API Testing
+
+Soportar API Testing basado en OpenAPI/Swagger mediante `ai/services/api-analysis-service.md`.
+
+Para API:
+
+- usar `request` de `@playwright/test`;
+- importar payloads desde `fixtures/`;
+- validar status code;
+- validar cuerpo de respuesta con assertions claras;
+- validar contratos derivados del analisis OpenAPI/Swagger;
+- cubrir casos positivos `200`, `201`, `204`;
+- cubrir casos negativos `400`, `401`, `403`, `404`, `409`, `500` cuando el contrato lo soporte;
+- registrar contratos o endpoints pendientes cuando no esten documentados.
 
 ---
 
 # Reglas QA
 
-La automatización debe validar:
+La automatizacion debe validar:
 
 - happy paths
 - escenarios negativos
 - validaciones funcionales
-- reglas de negocio críticas
+- reglas de negocio criticas
 
 ---
 
-# Flujo obligatorio de generación
+# Flujo obligatorio de generacion
 
-## PASO 1 — Leer contexto
+## PASO 1 - Leer contexto
 
 Leer:
 
@@ -279,35 +310,46 @@ Leer:
 
 ---
 
-## PASO 2 — Resolver nivel
+## PASO 2 - Resolver nivel
 
 Resolver:
 
-- básico
+- basico
 - intermedio
 - avanzado
+- playwright-ui
+- playwright-api
+- playwright-e2e
+
+Para `playwright-api`, resolver tambien:
+
+- contrato OpenAPI/Swagger fuente;
+- endpoints cubiertos;
+- codigos HTTP esperados;
+- validaciones de schema;
+- estrategia negativa.
 
 ---
 
-## PASO 3 — Resolver estructura
+## PASO 3 - Resolver estructura
 
-Generar estructura según nivel.
+Generar estructura segun nivel.
 
 ---
 
-## PASO 4 — Generar tests
+## PASO 4 - Generar tests
 
 Generar:
 
 - describe
 - beforeEach
 - assertions
-- navegación
+- navegacion
 - validaciones
 
 ---
 
-## PASO 5 — Generar Page Objects
+## PASO 5 - Generar Page Objects
 
 Si aplica:
 
@@ -317,7 +359,7 @@ Si aplica:
 
 ---
 
-## PASO 6 — Persistencia
+## PASO 6 - Persistencia
 
 Delegar a:
 
@@ -342,9 +384,9 @@ test-automation/
 - v2
 - v3
 
-Cada versión debe incluir:
+Cada version debe incluir:
 
-- código generado
+- codigo generado
 - metadata.json
 - strategy utilizada
 - framework utilizado
@@ -355,11 +397,11 @@ Cada versión debe incluir:
 
 # Resultado esperado
 
-Generar automatización:
+Generar automatizacion:
 
 - mantenible
 - reutilizable
 - desacoplada
-- lista para evolución
+- lista para evolucion
 - consistente con QA real
 - compatible con CI/CD

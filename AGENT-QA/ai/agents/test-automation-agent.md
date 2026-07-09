@@ -42,11 +42,15 @@ Debes:
 - resolver HU mediante `hu-service.md`;
 - validar HU enriquecida, plan y casos mediante `validation-service.md`;
 - resolver framework mediante `strategy-service.md`;
+- resolver estrategia de locators mediante `locator-service.md`;
+- resolver datos de prueba mediante `test-data-service.md`;
+- delegar analisis OpenAPI/Swagger a `api-analysis-service.md` cuando el origen sea un contrato API;
 - delegar generacion tecnica a `ai/skills/generate-test-automation.md`;
 - persistir artefactos mediante `artifact-service.md`;
 - versionar mediante `versioning-service.md`;
 - actualizar summaries mediante `summary-service.md`;
 - registrar auditoria y errores mediante `logging-service.md`;
+- delegar ejecucion y captura de resultados a `test-execution-service.md` cuando el usuario solicite validar la automatizacion generada;
 - mantener trazabilidad entre HU, plan, casos y automatizacion.
 
 ---
@@ -170,7 +174,7 @@ Niveles soportados:
 - intermedio;
 - avanzado.
 
-Para Playwright TypeScript, el nivel minimo debe generar un proyecto ejecutable. Los niveles intermedio y avanzado agregan Page Objects, fixtures, utilidades y metadata mas completa.
+Para Playwright TypeScript, el nivel minimo debe generar un proyecto ejecutable. Los niveles intermedio y avanzado agregan Page Objects, fixtures, utilidades y metadata mas completa usando los templates oficiales.
 
 ## PASO 6 - Delegar generacion
 
@@ -183,6 +187,10 @@ ai/skills/generate-test-automation.md
 El skill debe:
 
 - analizar casos de prueba;
+- identificar si la automatizacion requerida es UI, API o E2E;
+- consultar `locator-service.md`;
+- consultar `test-data-service.md`;
+- consultar `api-analysis-service.md` para contratos OpenAPI/Swagger;
 - identificar flujo automatizable;
 - leer templates;
 - generar proyecto ejecutable;
@@ -206,8 +214,12 @@ Contenido minimo:
 package.json
 playwright.config.ts
 tests/
+tests/ui/
+tests/api/
+tests/e2e/
 pages/
 fixtures/
+reports/
 utils/
 README.md
 metadata.json
@@ -239,18 +251,54 @@ SIEMPRE:
 
 # Selectores
 
-Priorizar:
+Delegar reglas de selectores a:
 
-1. `data-testid`
-2. `role`
-3. `text`
-4. `css`
+```text
+ai/services/locator-service.md
+```
+
+Prioridad:
+
+1. `getByRole()`
+2. `getByTestId()`
+3. `getByLabel()`
+4. locator semantico controlado
 
 Evitar:
 
 - xpath innecesario;
 - selectores fragiles;
 - indices dinamicos.
+
+---
+
+# Datos de prueba
+
+Delegar reglas de datos a:
+
+```text
+ai/services/test-data-service.md
+```
+
+Los tests deben importar datos desde `fixtures/` y evitar valores quemados dentro del spec.
+
+---
+
+# API Testing con OpenAPI/Swagger
+
+Cuando el usuario solicite automatizacion API basada en contrato, delegar a:
+
+```text
+ai/services/api-analysis-service.md
+```
+
+El agente debe mantener el flujo:
+
+```text
+Swagger/OpenAPI -> API Analysis -> API Test Cases -> Playwright API Automation -> Execution -> Report
+```
+
+No implementar performance testing ni dashboards en esta fase.
 
 ---
 
@@ -284,6 +332,24 @@ ai/projects/{project_slug}/artifacts/{story_id}/test-automation/vN/{framework_id
 
 ---
 
+# Ejecucion de automatizacion
+
+Cuando el usuario solicite validar resultados, delegar a:
+
+```text
+ai/services/test-execution-service.md
+```
+
+El agente debe solicitar al servicio:
+
+- instalar dependencias con `npm install` dentro del proyecto generado;
+- ejecutar `npx playwright test`;
+- capturar reportes, screenshots, traces y logs;
+- guardar evidencias bajo `test-automation/executions/run-NNN/`;
+- actualizar summary y logs con estado, pruebas pasadas y fallidas.
+
+---
+
 # Summary obligatorio
 
 Actualizar `summary.json` registrando:
@@ -291,7 +357,18 @@ Actualizar `summary.json` registrando:
 - `automation_generated`;
 - `framework`;
 - `framework_version`;
+- `automation_type`;
+- `supports_page_object`;
+- `supports_fixtures`;
+- `api_tests_generated`;
+- `endpoints_covered`;
+- `contract_validated`;
+- `api_execution_status`;
 - `automation_version`;
+- `execution_status`;
+- `last_execution`;
+- `passed_tests`;
+- `failed_tests`;
 - `generated_at`;
 - `latest_path`;
 - nivel;

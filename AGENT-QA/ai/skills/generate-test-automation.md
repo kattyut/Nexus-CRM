@@ -50,6 +50,10 @@ Este skill debe:
 - leer summary de HU;
 - leer contexto de negocio;
 - leer `strategy-service.md` y resolver framework;
+- identificar tipo de automatizacion: UI, API o E2E;
+- consultar `locator-service.md` antes de generar locators;
+- consultar `test-data-service.md` antes de generar datos;
+- consultar `api-analysis-service.md` cuando exista contrato OpenAPI/Swagger;
 - leer `rule_file` del framework seleccionado;
 - leer templates desde `templates_path`;
 - generar un proyecto Playwright TypeScript ejecutable;
@@ -57,6 +61,7 @@ Este skill debe:
 - persistir mediante `artifact-service.md`;
 - actualizar `summary.json` mediante `summary-service.md`;
 - registrar eventos y errores mediante `logging-service.md`;
+- dejar la automatizacion lista para ejecucion controlada por `test-execution-service.md`;
 - mantener trazabilidad entre HU, plan, casos y automatizacion.
 
 Este skill NO debe:
@@ -92,6 +97,30 @@ Delegar a `strategy-service.md`:
 - resolver `rule_file`;
 - resolver `templates_path`;
 - resolver `output_path`.
+- resolver capacidades `supports_ui`, `supports_api`, `supports_page_object`, `supports_fixtures`;
+- resolver capacidades `api_contract_testing`, `http_validation`, `schema_validation`, `negative_testing`;
+- resolver tipo Playwright: `playwright-ui`, `playwright-api` o `playwright-e2e`.
+
+## PASO 2.1 - Identificar tipo de automatizacion
+
+Leer casos de prueba y clasificar:
+
+- `UI`: pasos sobre pantallas, formularios, botones, navegación o validaciones visuales;
+- `API`: pasos sobre endpoints, request, response, status code, payload o contrato OpenAPI/Swagger;
+- `E2E`: combina preparacion/validacion API con flujo UI.
+
+Si existe contrato OpenAPI/Swagger, delegar analisis a `api-analysis-service.md`. Si el caso menciona API sin contrato suficiente, generar base API solo con placeholders visibles y registrar pendientes.
+
+## PASO 2.2 - Analizar contrato API
+
+Cuando el tipo sea `playwright-api` o `playwright-e2e` y exista contrato:
+
+- leer `openapi.json`, `swagger.json`, `openapi.yaml` o `swagger.yaml`;
+- delegar analisis a `api-analysis-service.md`;
+- identificar endpoints, metodos HTTP, parametros, headers, autenticacion, payloads, responses y codigos HTTP;
+- derivar casos positivos `200`, `201`, `204`;
+- derivar casos negativos `400`, `401`, `403`, `404`, `409`, `500`;
+- conservar endpoints cubiertos y contrato fuente en metadata.
 
 ## PASO 3 - Validar automatizabilidad
 
@@ -103,6 +132,28 @@ Delegar a `validation-service.md`:
 - bloquear si los pasos no permiten generar codigo ejecutable sin inventar informacion.
 
 Cuando falte una URL o selector real, usar placeholders seguros y visibles, por ejemplo `BASE_URL` o selectores por rol/texto derivados literalmente del caso. Registrar el pendiente en metadata y README.
+
+## PASO 3.1 - Resolver locators
+
+Delegar a `locator-service.md`:
+
+- priorizar `getByRole()`;
+- luego `getByTestId()`;
+- luego `getByLabel()`;
+- finalmente locator semantico controlado;
+- bloquear o registrar pendiente si el selector seria fragil.
+
+Los locators deben vivir en Page Objects, no en el spec.
+
+## PASO 3.2 - Resolver datos de prueba
+
+Delegar a `test-data-service.md`:
+
+- generar datos validos;
+- generar datos invalidos cuando el caso lo requiera;
+- separar datos en `fixtures/`;
+- importar datos desde `fixtures/test-data.ts`;
+- evitar valores quemados dentro del spec.
 
 ## PASO 4 - Crear version
 
@@ -143,7 +194,8 @@ package.json
 playwright.config.ts
 tests/{story_id}.spec.ts
 pages/{module}.page.ts
-fixtures/{feature}.fixture.ts
+fixtures/{entity}.json
+fixtures/test-data.ts
 utils/
 README.md
 metadata.json
@@ -164,11 +216,22 @@ Para Playwright TypeScript:
 - usar `test.describe`;
 - usar `test.step` para mapear pasos del caso;
 - usar `async/await`;
-- usar Page Object en niveles intermedio y avanzado;
-- priorizar selectores `data-testid`, `role`, `text`, `css`;
+- usar Page Object para UI y E2E;
+- importar fixtures para datos de prueba;
+- aplicar locators segun `locator-service.md`;
+- evitar `waitForTimeout()` salvo justificacion documentada;
 - usar `BASE_URL` desde variable de entorno;
 - activar evidencias: trace, screenshot y video en fallos;
 - no hardcodear secretos.
+
+Para `playwright-api`:
+
+- usar `request` de `@playwright/test`;
+- importar payloads desde `fixtures/`;
+- validar status code y cuerpo de respuesta;
+- validar contratos derivados por `api-analysis-service.md`;
+- generar pruebas bajo `tests/api/`;
+- incluir casos positivos y negativos cuando el contrato lo soporte.
 
 ## PASO 7 - Metadata
 
@@ -180,7 +243,13 @@ Crear `metadata.json` dentro del proyecto generado con:
   "automation_generated": true,
   "framework": "playwright-typescript",
   "framework_name": "Playwright + TypeScript",
-  "framework_version": "catalog:1.1.0",
+  "framework_version": "catalog:1.3.0",
+  "automation_type": "playwright-ui",
+  "api_tests_generated": false,
+  "endpoints_covered": [],
+  "contract_validated": false,
+  "supports_page_object": true,
+  "supports_fixtures": true,
   "automation_version": "vN",
   "latest": true,
   "project_slug": "{project_slug}",
@@ -208,7 +277,16 @@ Agregar o actualizar:
 - `automation_generated`
 - `framework`
 - `framework_version`
+- `automation_type`
+- `api_tests_generated`
+- `endpoints_covered`
+- `contract_validated`
+- `api_execution_status`
 - `automation_version`
+- `execution_status`
+- `last_execution`
+- `passed_tests`
+- `failed_tests`
 - `generated_at`
 - `artifacts.test_automation.latest_version`
 - `artifacts.test_automation.path`
@@ -236,11 +314,17 @@ ai/projects/{project_slug}/artifacts/{story_id}/test-automation/vN/playwright-ty
   package.json
   playwright.config.ts
   tests/
-    {story_id}.spec.ts
+    ui/
+      {story_id}.spec.ts
+    api/
+      {story_id}.api.spec.ts
+    e2e/
   pages/
     {module}.page.ts
   fixtures/
-    {feature}.fixture.ts
+    {entity}.json
+    test-data.ts
+  reports/
   utils/
   README.md
   metadata.json

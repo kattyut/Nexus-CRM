@@ -1,0 +1,14 @@
+{
+  "{{entity_collection_name}}": [
+    {
+      "name": "{{valid_name}}",
+      "description": "{{valid_description}}"
+    }
+  ],
+  "invalid": [
+    {
+      "name": "",
+      "description": "{{invalid_description}}"
+    }
+  ]
+}
