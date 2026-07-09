@@ -1,0 +1,15 @@
+{
+  "name": "nexus-crm-api-postman-playwright",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automatizacion API Playwright TypeScript generada desde la coleccion Postman Nexus.",
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test tests/nexus-api.spec.ts",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "typescript": "^5.5.0"
+  }
+}

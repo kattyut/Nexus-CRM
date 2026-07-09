@@ -1,0 +1,17 @@
+{
+  "name": "nexus-crm-api-swagger-playwright",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automatizacion API Playwright TypeScript generada desde Swagger/OpenAPI Nexus.",
+  "scripts": {
+    "test": "playwright test",
+    "test:openapi": "playwright test tests/openapi-contract.spec.ts",
+    "test:crud": "playwright test tests/openapi-crud.spec.ts",
+    "test:swagger": "playwright test tests/openapi-contract.spec.ts tests/openapi-crud.spec.ts",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "typescript": "^5.5.0"
+  }
+}
