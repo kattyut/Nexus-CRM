@@ -144,6 +144,37 @@ Si no existe `sufficiency_status`, usar `validation-service.md` para clasificar 
 
 ---
 
+# Decision Gate interno
+
+Antes de construir el plan, este skill debe decidir y justificar la estrategia QA recomendada usando `validation-service.md`, contexto, HU y artefactos previos.
+
+Debe evaluar si aplican:
+
+| Tipo | Criterio de decision |
+|---|---|
+| Smoke | Flujo critico minimo o validacion basica de despliegue |
+| Regression | Riesgo de romper funcionalidades existentes o modulos relacionados |
+| Sanity | Cambio acotado que requiere validacion rapida focalizada |
+| Exploratory | Reglas ambiguas, UX incierta o alto numero de escenarios desconocidos |
+| API | Endpoints, integraciones, contratos o backend expuestos |
+| UI | Pantallas, formularios, navegacion, permisos visuales |
+| E2E | Flujo cruza modulos, roles, API/UI o estados de negocio |
+
+Tambien debe definir:
+
+- `recommended_strategy`;
+- `risk_level`;
+- `complexity`;
+- `coverage_summary` sugerido;
+- alcance recomendado por tipo de prueba;
+- razones para no incluir tipos de prueba no aplicables.
+
+No debe agregar tipos de prueba por plantilla. Cada recomendacion debe estar soportada por HU, contexto, analisis, enriquecimiento o reglas del proyecto.
+
+Registrar decisiones en `summary-service.md` y `logging-service.md` con nivel `DECISION`.
+
+---
+
 # Seleccion de metodologia QA
 
 ## Catalogo oficial
@@ -324,6 +355,8 @@ Definir:
 
 - enfoque QA
 - metodologia aplicada
+- estrategia QA recomendada y justificacion tecnica
+- decision por tipo: Smoke, Regression, Sanity, Exploratory, API, UI y E2E
 - profundidad esperada
 - enfoque funcional o tecnico
 - criterios de priorizacion
@@ -493,7 +526,8 @@ Si el usuario aprueba guardar:
 2. Crear estructura faltante automaticamente.
 3. Usar siempre `versioning-service.md` para crear una version del plan.
 4. Registrar metadata de version, metodologia, prioridad, cobertura y origen.
-5. Registrar resumen mediante `summary-service.md`.
+5. Registrar resumen mediante `summary-service.md`, incluyendo `recommended_strategy`, `risk_level`, `complexity` y `coverage_summary`.
+6. Registrar decisiones mediante `logging-service.md` con nivel `DECISION`.
 
 Ruta objetivo para plan individual:
 

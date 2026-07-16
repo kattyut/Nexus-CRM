@@ -150,6 +150,46 @@ Los casos deben derivarse de:
 
 ---
 
+# Decision Gate interno
+
+Antes de generar casos, este skill debe clasificar criticidad, prioridad y riesgo de la HU y de cada escenario candidato.
+
+Debe decidir para cada caso:
+
+- `AUTOMATIZAR`
+- `MANUAL`
+
+La decision debe justificarse con evidencia.
+
+## Criterios de decision
+
+| Dimension | Criterios |
+|---|---|
+| Criticidad | impacto negocio, flujo principal, seguridad, datos, roles, integraciones |
+| Prioridad | valor de validacion, riesgo, frecuencia de uso, dependencia para otros casos |
+| Riesgo | probabilidad de fallo, impacto, ambiguedad, complejidad, datos sensibles |
+| Automatizar | repetible, estable, alto valor de regresion, datos controlables, resultado verificable |
+| Manual | requiere juicio humano, UX subjetiva, datos no controlables, bajo ROI, selector/ambiente inestable |
+
+## Coberturas obligatorias
+
+Generar casos:
+
+- positivos;
+- negativos;
+- borde;
+- validaciones;
+- integracion cuando aplique;
+- seguridad basica cuando aplique.
+
+Seguridad basica aplica solo si hay roles, permisos, autenticacion, datos sensibles, sesiones, acceso o integraciones. No inventar seguridad avanzada si la HU no la soporta.
+
+Registrar en summary: `risk_level`, `complexity`, `automation_recommendation`, `coverage_summary` y decisiones por caso.
+
+Registrar en logs cada decision relevante con nivel `DECISION`.
+
+---
+
 # Estructura obligatoria del artefacto
 
 El artefacto de casos debe iniciar con un encabezado visible.
@@ -200,9 +240,13 @@ Cada caso debe incluir:
 | Pasos | Secuencia de ejecucion |
 | Resultado esperado | Resultado verificable |
 | Prioridad | Alta / Media / Baja |
+| Criticidad | Alta / Media / Baja / Desconocida |
+| Riesgo | Alto / Medio / Bajo / Desconocido |
 | Tipo de prueba | Funcional, integracion, seguridad, etc. |
 | Cobertura | Positiva, negativa, alterna, edge |
 | Automatizable | Si / No / Pendiente |
+| Ejecucion recomendada | AUTOMATIZAR / MANUAL |
+| Justificacion de ejecucion | Razon basada en evidencia |
 | Notas QA | Riesgos, supuestos o dependencias |
 
 ---
@@ -411,7 +455,8 @@ Si el usuario aprueba guardar:
 2. Crear estructura faltante automaticamente.
 3. Usar siempre `versioning-service.md` para crear una version de casos.
 4. Registrar metadata de version, plan base, prioridad, cobertura y origen.
-5. Registrar resumen mediante `summary-service.md`.
+5. Registrar resumen mediante `summary-service.md`, incluyendo `risk_level`, `complexity`, `automation_recommendation`, `coverage_summary` y decisiones por caso.
+6. Registrar decisiones mediante `logging-service.md` con nivel `DECISION`.
 
 Ruta objetivo:
 

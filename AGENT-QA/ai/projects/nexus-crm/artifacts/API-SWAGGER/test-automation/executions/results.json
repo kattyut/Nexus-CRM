@@ -100,12 +100,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 17,
+                      "duration": 32,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.082Z",
+                      "startTime": "2026-07-16T19:22:21.055Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -120,51 +120,66 @@
             },
             {
               "title": "API-CONTRACT-001 | escenarios exitosos GET sin parametros retornan response esperada",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\api\\openapi-generated.spec.ts",
-                        "line": 29,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 52,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 1857,
+                      "error": {
+                        "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m",
+                        "stack": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at TestExecutionService.expectContractResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\services\\test-execution-service.ts:20:20)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\api\\openapi-generated.spec.ts:39:22",
+                        "location": {
+                          "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                          "column": 77,
+                          "line": 44
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\clients\\nexus-api.client.ts:44\n\n\u001b[0m \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m   \u001b[36masync\u001b[39m expectJsonResponse({ response\u001b[33m,\u001b[39m elapsedMs }\u001b[33m:\u001b[39m \u001b[33mTimedResponse\u001b[39m\u001b[33m,\u001b[39m allowedStatuses\u001b[33m:\u001b[39m number[] \u001b[33m=\u001b[39m [\u001b[35m200\u001b[39m]) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m     expect(allowedStatuses\u001b[33m,\u001b[39m \u001b[32m`status ${response.status()} must be expected`\u001b[39m)\u001b[33m.\u001b[39mtoContain(response\u001b[33m.\u001b[39mstatus())\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m     expect(elapsedMs\u001b[33m,\u001b[39m \u001b[32m'response time must stay under API_RESPONSE_SLA_MS'\u001b[39m)\u001b[33m.\u001b[39mtoBeLessThanOrEqual(\n \u001b[90m 46 |\u001b[39m       \u001b[33mNumber\u001b[39m(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mAPI_RESPONSE_SLA_MS\u001b[39m \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[35m2000\u001b[39m)\n \u001b[90m 47 |\u001b[39m     )\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                            "column": 77,
+                            "line": 44
+                          },
+                          "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m\n\n   at ..\\clients\\nexus-api.client.ts:44\n\n  42 |\n  43 |   async expectJsonResponse({ response, elapsedMs }: TimedResponse, allowedStatuses: number[] = [200]) {\n> 44 |     expect(allowedStatuses, `status ${response.status()} must be expected`).toContain(response.status());\n     |                                                                             ^\n  45 |     expect(elapsedMs, 'response time must stay under API_RESPONSE_SLA_MS').toBeLessThanOrEqual(\n  46 |       Number(process.env.API_RESPONSE_SLA_MS ?? 2000)\n  47 |     );\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at TestExecutionService.expectContractResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\services\\test-execution-service.ts:20:20)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\api\\openapi-generated.spec.ts:39:22"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.149Z",
-                      "annotations": [
+                      "startTime": "2026-07-16T19:22:21.209Z",
+                      "annotations": [],
+                      "attachments": [
                         {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\api\\openapi-generated.spec.ts",
-                            "line": 29,
-                            "column": 10
-                          }
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\api-openapi-generated-Nexu-54e9a--retornan-response-esperada\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\api-openapi-generated-Nexu-54e9a--retornan-response-esperada\\trace.zip"
                         }
                       ],
-                      "attachments": []
+                      "errorLocation": {
+                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                        "column": 77,
+                        "line": 44
+                      }
                     }
                   ],
-                  "status": "skipped"
+                  "status": "unexpected"
                 }
               ],
               "id": "3fbbd47a14380634db04-57cc6ae91a82deb7cd8e",
@@ -179,46 +194,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\api\\openapi-generated.spec.ts",
-                        "line": 48,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 1,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 11,
+                      "status": "passed",
+                      "duration": 2035,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.220Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\api\\openapi-generated.spec.ts",
-                            "line": 48,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:24.660Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "3fbbd47a14380634db04-7a44db464aae6fe6b8f6",
@@ -233,46 +228,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\api\\openapi-generated.spec.ts",
-                        "line": 66,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 1,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 8,
+                      "status": "passed",
+                      "duration": 760,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.249Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\api\\openapi-generated.spec.ts",
-                            "line": 66,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:26.794Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "3fbbd47a14380634db04-61abb584e5e8182e8da0",
@@ -304,46 +279,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 1,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 140,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.278Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:27.623Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "90b1cca9232b0449d264-d5dacc28b3b0e2b5de66",
@@ -358,46 +313,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 1,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 90,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.295Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:27.809Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "90b1cca9232b0449d264-2a1e299ffdcfad47a4bc",
@@ -412,46 +347,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 1,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 88,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.314Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:27.944Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "90b1cca9232b0449d264-4de31b6daecc7dbee5c7",
@@ -461,51 +376,66 @@
             },
             {
               "title": "SWG-CT-004 | GET /companies responde segun contrato (Nexus.Api)",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 1,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 2,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 85,
+                      "error": {
+                        "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m",
+                        "stack": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts:66:17",
+                        "location": {
+                          "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                          "column": 77,
+                          "line": 44
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\clients\\nexus-api.client.ts:44\n\n\u001b[0m \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m   \u001b[36masync\u001b[39m expectJsonResponse({ response\u001b[33m,\u001b[39m elapsedMs }\u001b[33m:\u001b[39m \u001b[33mTimedResponse\u001b[39m\u001b[33m,\u001b[39m allowedStatuses\u001b[33m:\u001b[39m number[] \u001b[33m=\u001b[39m [\u001b[35m200\u001b[39m]) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m     expect(allowedStatuses\u001b[33m,\u001b[39m \u001b[32m`status ${response.status()} must be expected`\u001b[39m)\u001b[33m.\u001b[39mtoContain(response\u001b[33m.\u001b[39mstatus())\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m     expect(elapsedMs\u001b[33m,\u001b[39m \u001b[32m'response time must stay under API_RESPONSE_SLA_MS'\u001b[39m)\u001b[33m.\u001b[39mtoBeLessThanOrEqual(\n \u001b[90m 46 |\u001b[39m       \u001b[33mNumber\u001b[39m(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mAPI_RESPONSE_SLA_MS\u001b[39m \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[35m2000\u001b[39m)\n \u001b[90m 47 |\u001b[39m     )\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                            "column": 77,
+                            "line": 44
+                          },
+                          "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m\n\n   at ..\\clients\\nexus-api.client.ts:44\n\n  42 |\n  43 |   async expectJsonResponse({ response, elapsedMs }: TimedResponse, allowedStatuses: number[] = [200]) {\n> 44 |     expect(allowedStatuses, `status ${response.status()} must be expected`).toContain(response.status());\n     |                                                                             ^\n  45 |     expect(elapsedMs, 'response time must stay under API_RESPONSE_SLA_MS').toBeLessThanOrEqual(\n  46 |       Number(process.env.API_RESPONSE_SLA_MS ?? 2000)\n  47 |     );\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts:66:17"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.333Z",
-                      "annotations": [
+                      "startTime": "2026-07-16T19:22:28.074Z",
+                      "annotations": [],
+                      "attachments": [
                         {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\openapi-contract-Nexus-API-9cab9-e-segun-contrato-Nexus-Api-\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\openapi-contract-Nexus-API-9cab9-e-segun-contrato-Nexus-Api-\\trace.zip"
                         }
                       ],
-                      "attachments": []
+                      "errorLocation": {
+                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                        "column": 77,
+                        "line": 44
+                      }
                     }
                   ],
-                  "status": "skipped"
+                  "status": "unexpected"
                 }
               ],
               "id": "90b1cca9232b0449d264-73f020c60cc0efc54b2e",
@@ -520,46 +450,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 2,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 709,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.364Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:29.984Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "90b1cca9232b0449d264-cae8ea5d19e262db9c7a",
@@ -574,46 +484,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 2,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 170,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.389Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:30.794Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "90b1cca9232b0449d264-730ad452e1b8cb07cf7f",
@@ -628,46 +518,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 2,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 147,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.409Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:31.010Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "90b1cca9232b0449d264-458c0582f1d5c4c0134e",
@@ -677,51 +547,66 @@
             },
             {
               "title": "SWG-CT-008 | GET /contacts responde segun contrato (Nexus.Api)",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 2,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 125,
+                      "error": {
+                        "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m",
+                        "stack": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts:66:17",
+                        "location": {
+                          "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                          "column": 77,
+                          "line": 44
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\clients\\nexus-api.client.ts:44\n\n\u001b[0m \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m   \u001b[36masync\u001b[39m expectJsonResponse({ response\u001b[33m,\u001b[39m elapsedMs }\u001b[33m:\u001b[39m \u001b[33mTimedResponse\u001b[39m\u001b[33m,\u001b[39m allowedStatuses\u001b[33m:\u001b[39m number[] \u001b[33m=\u001b[39m [\u001b[35m200\u001b[39m]) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m     expect(allowedStatuses\u001b[33m,\u001b[39m \u001b[32m`status ${response.status()} must be expected`\u001b[39m)\u001b[33m.\u001b[39mtoContain(response\u001b[33m.\u001b[39mstatus())\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m     expect(elapsedMs\u001b[33m,\u001b[39m \u001b[32m'response time must stay under API_RESPONSE_SLA_MS'\u001b[39m)\u001b[33m.\u001b[39mtoBeLessThanOrEqual(\n \u001b[90m 46 |\u001b[39m       \u001b[33mNumber\u001b[39m(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mAPI_RESPONSE_SLA_MS\u001b[39m \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[35m2000\u001b[39m)\n \u001b[90m 47 |\u001b[39m     )\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                            "column": 77,
+                            "line": 44
+                          },
+                          "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m\n\n   at ..\\clients\\nexus-api.client.ts:44\n\n  42 |\n  43 |   async expectJsonResponse({ response, elapsedMs }: TimedResponse, allowedStatuses: number[] = [200]) {\n> 44 |     expect(allowedStatuses, `status ${response.status()} must be expected`).toContain(response.status());\n     |                                                                             ^\n  45 |     expect(elapsedMs, 'response time must stay under API_RESPONSE_SLA_MS').toBeLessThanOrEqual(\n  46 |       Number(process.env.API_RESPONSE_SLA_MS ?? 2000)\n  47 |     );\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts:66:17"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.426Z",
-                      "annotations": [
+                      "startTime": "2026-07-16T19:22:31.204Z",
+                      "annotations": [],
+                      "attachments": [
                         {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\openapi-contract-Nexus-API-dd483-e-segun-contrato-Nexus-Api-\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\openapi-contract-Nexus-API-dd483-e-segun-contrato-Nexus-Api-\\trace.zip"
                         }
                       ],
-                      "attachments": []
+                      "errorLocation": {
+                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                        "column": 77,
+                        "line": 44
+                      }
                     }
                   ],
-                  "status": "skipped"
+                  "status": "unexpected"
                 }
               ],
               "id": "90b1cca9232b0449d264-a2f4b12fd97eca69fc2d",
@@ -736,46 +621,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 3,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 369,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.453Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:32.958Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "90b1cca9232b0449d264-4f6480b399b6a88c59fb",
@@ -790,46 +655,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 3,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 120,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.479Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:33.428Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "90b1cca9232b0449d264-d9d6962eaa6f8e6b8d72",
@@ -839,51 +684,66 @@
             },
             {
               "title": "SWG-CT-011 | GET /activities responde segun contrato (Nexus.Api)",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                        "line": 46,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 3,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 80,
+                      "error": {
+                        "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m",
+                        "stack": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts:66:17",
+                        "location": {
+                          "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                          "column": 77,
+                          "line": 44
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\clients\\nexus-api.client.ts:44\n\n\u001b[0m \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m   \u001b[36masync\u001b[39m expectJsonResponse({ response\u001b[33m,\u001b[39m elapsedMs }\u001b[33m:\u001b[39m \u001b[33mTimedResponse\u001b[39m\u001b[33m,\u001b[39m allowedStatuses\u001b[33m:\u001b[39m number[] \u001b[33m=\u001b[39m [\u001b[35m200\u001b[39m]) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m     expect(allowedStatuses\u001b[33m,\u001b[39m \u001b[32m`status ${response.status()} must be expected`\u001b[39m)\u001b[33m.\u001b[39mtoContain(response\u001b[33m.\u001b[39mstatus())\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m     expect(elapsedMs\u001b[33m,\u001b[39m \u001b[32m'response time must stay under API_RESPONSE_SLA_MS'\u001b[39m)\u001b[33m.\u001b[39mtoBeLessThanOrEqual(\n \u001b[90m 46 |\u001b[39m       \u001b[33mNumber\u001b[39m(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mAPI_RESPONSE_SLA_MS\u001b[39m \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[35m2000\u001b[39m)\n \u001b[90m 47 |\u001b[39m     )\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                            "column": 77,
+                            "line": 44
+                          },
+                          "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200]\u001b[39m\n\n   at ..\\clients\\nexus-api.client.ts:44\n\n  42 |\n  43 |   async expectJsonResponse({ response, elapsedMs }: TimedResponse, allowedStatuses: number[] = [200]) {\n> 44 |     expect(allowedStatuses, `status ${response.status()} must be expected`).toContain(response.status());\n     |                                                                             ^\n  45 |     expect(elapsedMs, 'response time must stay under API_RESPONSE_SLA_MS').toBeLessThanOrEqual(\n  46 |       Number(process.env.API_RESPONSE_SLA_MS ?? 2000)\n  47 |     );\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts:66:17"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.503Z",
-                      "annotations": [
+                      "startTime": "2026-07-16T19:22:33.577Z",
+                      "annotations": [],
+                      "attachments": [
                         {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-contract.spec.ts",
-                            "line": 46,
-                            "column": 10
-                          }
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\openapi-contract-Nexus-API-decf5-e-segun-contrato-Nexus-Api-\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\openapi-contract-Nexus-API-decf5-e-segun-contrato-Nexus-Api-\\trace.zip"
                         }
                       ],
-                      "attachments": []
+                      "errorLocation": {
+                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                        "column": 77,
+                        "line": 44
+                      }
                     }
                   ],
-                  "status": "skipped"
+                  "status": "unexpected"
                 }
               ],
               "id": "90b1cca9232b0449d264-3fe2786f6d8e20a01ce0",
@@ -915,46 +775,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 1299,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.533Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:35.474Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-67fa1a533cb0cec6adef",
@@ -969,46 +809,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
+                      "status": "passed",
+                      "duration": 537,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.553Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:36.995Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-e1243cbafbdd40a6677e",
@@ -1023,46 +843,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 0,
+                      "status": "passed",
+                      "duration": 562,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.577Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:37.575Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-d2e3afc0adac4c0259d3",
@@ -1077,46 +877,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 0,
+                      "status": "passed",
+                      "duration": 489,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.602Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:38.195Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-422d8fd811c2bc61071f",
@@ -1131,46 +911,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 0,
+                      "status": "passed",
+                      "duration": 360,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.623Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:38.754Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-58876744542e2f24673b",
@@ -1185,46 +945,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 0,
+                      "status": "passed",
+                      "duration": 393,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.635Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:39.160Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-fb9cde1e9500c453d9dc",
@@ -1239,46 +979,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 0,
+                      "status": "passed",
+                      "duration": 303,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.654Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:39.595Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-00b510726f1ff4511605",
@@ -1293,46 +1013,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 0,
+                      "status": "passed",
+                      "duration": 2070,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.669Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:39.926Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-fe14bfcc9827a41d8fce",
@@ -1347,46 +1047,26 @@
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 0,
+                      "status": "passed",
+                      "duration": 1826,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.685Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-07-16T19:22:42.024Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "311698323a2e59bddb2b-e14b0bf51f3e278327e8",
@@ -1396,51 +1076,66 @@
             },
             {
               "title": "SWG-CRUD-010 | Activities - crear, actualizar y eliminar con contacto y tipo",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
                   "timeout": 45000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                      "location": {
-                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                        "line": 64,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 1,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 1836,
+                      "error": {
+                        "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200, 201, 202, 204]\u001b[39m",
+                        "stack": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200, 201, 202, 204]\u001b[39m\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at createEntity (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts:32:13)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts:281:27",
+                        "location": {
+                          "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                          "column": 77,
+                          "line": 44
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\clients\\nexus-api.client.ts:44\n\n\u001b[0m \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m   \u001b[36masync\u001b[39m expectJsonResponse({ response\u001b[33m,\u001b[39m elapsedMs }\u001b[33m:\u001b[39m \u001b[33mTimedResponse\u001b[39m\u001b[33m,\u001b[39m allowedStatuses\u001b[33m:\u001b[39m number[] \u001b[33m=\u001b[39m [\u001b[35m200\u001b[39m]) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m     expect(allowedStatuses\u001b[33m,\u001b[39m \u001b[32m`status ${response.status()} must be expected`\u001b[39m)\u001b[33m.\u001b[39mtoContain(response\u001b[33m.\u001b[39mstatus())\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m     expect(elapsedMs\u001b[33m,\u001b[39m \u001b[32m'response time must stay under API_RESPONSE_SLA_MS'\u001b[39m)\u001b[33m.\u001b[39mtoBeLessThanOrEqual(\n \u001b[90m 46 |\u001b[39m       \u001b[33mNumber\u001b[39m(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mAPI_RESPONSE_SLA_MS\u001b[39m \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[35m2000\u001b[39m)\n \u001b[90m 47 |\u001b[39m     )\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                            "column": 77,
+                            "line": 44
+                          },
+                          "message": "Error: status 400 must be expected\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m400\u001b[39m\nReceived array: \u001b[31m[200, 201, 202, 204]\u001b[39m\n\n   at ..\\clients\\nexus-api.client.ts:44\n\n  42 |\n  43 |   async expectJsonResponse({ response, elapsedMs }: TimedResponse, allowedStatuses: number[] = [200]) {\n> 44 |     expect(allowedStatuses, `status ${response.status()} must be expected`).toContain(response.status());\n     |                                                                             ^\n  45 |     expect(elapsedMs, 'response time must stay under API_RESPONSE_SLA_MS').toBeLessThanOrEqual(\n  46 |       Number(process.env.API_RESPONSE_SLA_MS ?? 2000)\n  47 |     );\n    at NexusApiClient.expectJsonResponse (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts:44:77)\n    at createEntity (C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts:32:13)\n    at C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts:281:27"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-09T14:53:07.709Z",
-                      "annotations": [
+                      "startTime": "2026-07-16T19:22:43.911Z",
+                      "annotations": [],
+                      "attachments": [
                         {
-                          "type": "skip",
-                          "description": "Definir RUN_API=true y API_BASE_URL=https://localhost:7167 para ejecutar contra el backend real.",
-                          "location": {
-                            "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\tests\\openapi-crud.spec.ts",
-                            "line": 64,
-                            "column": 10
-                          }
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\openapi-crud-Nexus-API---C-de8aa-liminar-con-contacto-y-tipo\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\executions\\test-results\\openapi-crud-Nexus-API---C-de8aa-liminar-con-contacto-y-tipo\\trace.zip"
                         }
                       ],
-                      "attachments": []
+                      "errorLocation": {
+                        "file": "C:\\Dev\\NEXUS-CRM\\AGENT-QA\\ai\\projects\\nexus-crm\\artifacts\\API-SWAGGER\\test-automation\\v1\\playwright-typescript\\clients\\nexus-api.client.ts",
+                        "column": 77,
+                        "line": 44
+                      }
                     }
                   ],
-                  "status": "skipped"
+                  "status": "unexpected"
                 }
               ],
               "id": "311698323a2e59bddb2b-045fc7e6d09097884e58",
@@ -1455,11 +1150,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-09T14:53:06.349Z",
-    "duration": 1416.408,
-    "expected": 1,
-    "skipped": 24,
-    "unexpected": 0,
+    "startTime": "2026-07-16T19:22:19.456Z",
+    "duration": 26702.158,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 5,
     "flaky": 0
   }
 }

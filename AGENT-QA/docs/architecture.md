@@ -1,273 +1,191 @@
 # Arquitectura del Sistema QA AI
 
-## Visión General
+## Vision General
 
-El sistema está diseñado bajo una arquitectura modular multiagente orientada a:
+AGENT-QA esta disenado como una arquitectura modular multiagente orientada a:
 
-- desacoplamiento
-- mantenibilidad
-- trazabilidad
-- versionamiento
-- escalabilidad
-- soporte multi-proyecto
+- desacoplamiento;
+- mantenibilidad;
+- trazabilidad;
+- versionamiento;
+- escalabilidad;
+- soporte multi-proyecto;
+- compatibilidad multi-modelo.
 
-La arquitectura separa responsabilidades entre:
+La arquitectura separa responsabilidades entre orquestacion, comandos, logica QA especializada, servicios reutilizables, configuracion, persistencia y scripts de soporte.
 
-- orquestación
-- comandos
-- lógica QA
-- servicios reutilizables
-- persistencia
+## Estructura Oficial
 
----
+La ruta activa del sistema es `ai/`.
 
-# Pilares del sistema
+```text
+ai/
+  agents/
+  commands/
+  skills/
+  services/
+  config/
+  projects/
+  scripts/
+docs/
+```
+
+No usar rutas `.github/ai/...` para el flujo actual, artefactos nuevos, configuraciones ni referencias internas.
+
+## Pilares del Sistema
 
 ```mermaid
 flowchart TD
-
     USER[Usuario]
-
     MASTER[QA Master Agent]
-
     COMMANDS[Commands]
     SKILLS[Skills]
     SERVICES[Services]
+    CONFIG[Config]
     PROJECTS[Projects]
+    DOCS[Docs]
 
     USER --> MASTER
-
     MASTER --> COMMANDS
     MASTER --> SKILLS
     MASTER --> SERVICES
-    MASTER --> PROJECTS
-
+    MASTER --> CONFIG
     COMMANDS --> SKILLS
-
     SKILLS --> SERVICES
-
     SERVICES --> PROJECTS
+    DOCS --> MASTER
 ```
 
----
+## Agents
 
-# QA Master Agent
+Los agents definen identidad, responsabilidades, restricciones y coordinacion de alto nivel.
 
-## Responsabilidad
+| Agent | Responsabilidad |
+|---|---|
+| `qa-master-agent.md` | Orquestador conversacional principal; valida contexto, detecta intencion y delega. |
+| `test-automation-agent.md` | Especialista en generacion de automatizacion QA ejecutable y trazable. |
 
-Es el orquestador principal del sistema.
+El QA Master no debe contener logica pesada. El Test Automation Agent no debe inventar flujos, endpoints, URLs, secretos ni validaciones.
 
-Se encarga de:
+## Commands
 
-- interpretar intención
-- mantener continuidad conversacional
-- validar contexto
-- resolver proyecto activo
-- coordinar services
-- delegar a skills
-
----
-
-# Commands
-
-## Responsabilidad
-
-Representan puntos de entrada del sistema.
-
-Permiten:
-
-- interpretar acciones
-- activar workflows
-- enrutar ejecución
-
-## Ejemplos
-
-- /read-us
-- /analyze-us
-- /enrich-us
-- /generate-test-plan
-- /generate-test-cases
-- /generate-test-matrix
-
----
-
-# Skills
-
-## Responsabilidad
-
-Implementan lógica QA especializada.
+Los commands representan puntos de entrada operativos. Interpretan acciones, validan precondiciones y delegan a skills o services.
 
 Ejemplos:
 
-- análisis de HU
-- enriquecimiento
-- generación de planes
-- generación de casos
-- matrices de trazabilidad
+- `qa-run.md`
+- `read-us.md`
+- `analyze-us.md`
+- `enrich-us.md`
+- `generate-test-plan.md`
+- `generate-test-cases.md`
+- `generate-test-matrix.md`
+- `generate-test-automation.md`
+- `connect-planner.md`
+- `planner-task.md`
 
----
+## Skills
 
-# Services
+Los skills implementan capacidades QA especializadas y generan resultados o artefactos trazables.
 
-## Responsabilidad
+Capacidades actuales:
 
-Centralizan lógica reutilizable y transversal.
+- lectura y normalizacion de HU;
+- analisis de HU;
+- enriquecimiento;
+- explicacion de requerimientos;
+- generacion de planes;
+- generacion de casos;
+- generacion de matrices;
+- generacion de automatizacion.
 
-```mermaid
-flowchart TD
+## Services
 
-    QA[QA Master Agent]
-
-    QA --> CONTEXT[context-service]
-    QA --> CONNECTION[connection-service]
-    QA --> STRATEGY[strategy-service]
-    QA --> VALIDATION[validation-service]
-    QA --> PROMPT[prompt-service]
-    QA --> ARTIFACT[artifact-service]
-    QA --> VERSIONING[versioning-service]
-    QA --> SUMMARY[summary-service]
-    QA --> LOGGING[logging-service]
-    QA --> HU[hu-service]
-```
-
----
-
-# Projects
-
-## Responsabilidad
-
-Persistencia y trazabilidad completa.
-
-Cada proyecto mantiene:
-
-- contexto
-- configuración
-- artefactos
-- logs
-- versiones
-- metadata
-
----
-
-# Beneficios de la arquitectura
-
-- Modularidad
-- Escalabilidad
-- Bajo acoplamiento
-- Fácil mantenimiento
-- Reutilización
-- Trazabilidad
-- Auditoría
-- Soporte multi-proyecto
-- Versionamiento profesional
-
----
-
-# Compatibilidad Multi-Modelo
-
-## Objetivo
-
-Garantizar comportamiento consistente del sistema independientemente del modelo utilizado.
-
-El sistema fue diseñado para funcionar de forma homogénea con distintos motores de IA, evitando diferencias importantes de comportamiento entre proveedores.
-
----
-
-# Modelos soportados
-
-- Codex
-- Gemini
-- GitHub Copilot
-- Claude
-- Otros modelos compatibles
-
----
-
-# Estrategia aplicada
-
-La consistencia entre modelos se logra mediante:
-
-- separación de responsabilidades
-- commands estructurados
-- skills desacoplados
-- services reutilizables
-- prompts estandarizados
-- reglas centralizadas
-- validaciones obligatorias
-
----
-
-# Arquitectura aplicada
+Los services centralizan logica reutilizable y transversal.
 
 ```mermaid
 flowchart TD
-
-    USER[Usuario]
-
-    USER --> MODEL[Modelo IA]
-
-    MODEL --> MASTER[QA Master Agent]
-
-    MASTER --> COMMANDS[Commands]
-    MASTER --> SKILLS[Skills]
-    MASTER --> SERVICES[Services]
-
-    SERVICES --> PROJECTS[Projects]
+    MASTER[QA Master Agent]
+    MASTER --> CONTEXT[context-service]
+    MASTER --> CONNECTION[connection-service]
+    MASTER --> HU[hu-service]
+    MASTER --> VALIDATION[validation-service]
+    MASTER --> STRATEGY[strategy-service]
+    MASTER --> PROMPT[prompt-service]
+    MASTER --> ARTIFACT[artifact-service]
+    MASTER --> VERSIONING[versioning-service]
+    MASTER --> SUMMARY[summary-service]
+    MASTER --> LOGGING[logging-service]
+    MASTER --> PLANNER[planner-mcp-service]
+    MASTER --> API[api-analysis-service]
+    MASTER --> LOCATOR[locator-service]
+    MASTER --> DATA[test-data-service]
+    MASTER --> EXECUTION[test-execution-service]
 ```
 
----
+Los services no son artefactos de usuario final; son contratos reutilizables para mantener consistencia.
 
-# Beneficios
+## Config
 
-## Consistencia funcional
+`ai/config/` contiene reglas, catalogos y templates:
 
-El sistema responde de forma similar sin depender del modelo IA específico.
+- reglas globales: `agent-rules.md`, `business.rules.md`;
+- estrategias de enriquecimiento;
+- metodologias QA para planes;
+- frameworks de automatizacion;
+- templates Playwright TypeScript.
 
----
+Los catalogos permiten evolucionar opciones sin cambiar la arquitectura.
 
-## Bajo acoplamiento
+## Projects
 
-La lógica funcional NO depende del proveedor IA.
+`ai/projects/{project-slug}/` mantiene persistencia operativa por proyecto:
 
----
+- contexto de negocio;
+- configuracion no secreta;
+- artefactos versionados;
+- summaries;
+- logs;
+- evidencias.
 
-## Mantenibilidad
+Los datos de proyectos concretos no deben documentarse en README general salvo como ejemplo estructural.
 
-Las reglas se mantienen centralizadas y reutilizables.
+## Scripts
 
----
+`ai/scripts/` contiene utilidades auxiliares, por ejemplo sincronizacion y procesamiento masivo. Los scripts deben respetar las mismas reglas de seguridad, trazabilidad y no almacenamiento de secretos.
 
-## Escalabilidad
+## Compatibilidad Multi-Modelo
 
-Permite agregar nuevos modelos sin rediseñar la arquitectura.
+AGENT-QA debe comportarse de forma consistente independientemente del modelo usado. La consistencia se logra con:
 
----
+- reglas centralizadas;
+- commands estructurados;
+- skills desacoplados;
+- services reutilizables;
+- prompts estandarizados;
+- validaciones obligatorias;
+- persistencia versionada.
 
-# Resultado esperado
+## Beneficios
 
-El usuario obtiene:
+- Consistencia funcional.
+- Bajo acoplamiento.
+- Mantenibilidad.
+- Escalabilidad.
+- Reutilizacion.
+- Trazabilidad.
+- Auditoria.
+- Soporte multi-proyecto.
 
-- comportamiento consistente
-- flujos homogéneos
-- misma estructura QA
-- misma trazabilidad
-- mismas validaciones
-- misma persistencia
+## Evolucion
 
-independientemente del modelo utilizado.
+La evolucion del sistema como producto se gobierna desde:
 
-# pending -- automatización:
+- `docs/roadmap.md`
+- `docs/capabilities.md`
+- `docs/architecture-evolution.md`
+- `docs/releases.md`
+- `docs/backlog.md`
 
-flowchart TD
+La automatizacion QA es una capacidad especializada coordinada por `QA Master Agent` y delegada a `Test Automation Agent` cuando ya existen HU enriquecida, plan y casos de prueba.
 
-    USER[Usuario]
-
-    USER --> MASTER[QA Master Agent]
-
-    MASTER --> READ[read-us]
-    MASTER --> ANALYZE[analyze-us]
-    MASTER --> ENRICH[enrich-us]
-    MASTER --> PLAN[test-plan]
-    MASTER --> CASES[test-cases]
-
-    MASTER --> AUTOMATION[Test Automation Agent]

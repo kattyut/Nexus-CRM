@@ -71,6 +71,33 @@ Tambien puede recibir una HU manual, pero en ese caso debe solicitar o ejecutar 
 
 ---
 
+# Decision Gate interno
+
+Antes de generar `analysis.md`, este skill debe evaluar y justificar decisiones tecnicas usando `validation-service.md`.
+
+La evaluacion debe cubrir:
+
+| Dimension | Salida esperada |
+|---|---|
+| Criticidad funcional | `functional_criticality` |
+| Complejidad funcional | `complexity` |
+| Riesgos tecnicos | `technical_risks` |
+| Riesgos funcionales | `functional_risks` |
+| Dependencias | `dependencies` |
+| Integraciones | `integrations` |
+| Impacto potencial | `potential_impact` |
+
+Reglas:
+
+- Cada evaluacion debe incluir justificacion y evidencia.
+- Si no hay informacion suficiente, usar `unknown` y registrar pendiente.
+- No inferir criticidad alta sin soporte en HU, contexto, reglas del proyecto o artefactos.
+- Registrar decisiones en `summary-service.md` y `logging-service.md` con nivel `DECISION`.
+
+El resultado de este gate alimenta el analisis, pero no cambia el comando ni agrega pasos visibles al usuario.
+
+---
+
 # Origenes soportados
 
 La HU analizada puede provenir de:
@@ -371,6 +398,7 @@ Contenido minimo de `analysis.md`:
 - encabezado con proyecto, HU ID, titulo, provider, source y version
 - estado inicial de la HU leida sin enriquecer
 - clasificacion de suficiencia
+- decision gate con criticidad, complejidad, riesgos, dependencias, integraciones e impacto potencial
 - tabla de evaluacion QA
 - veredicto INVEST
 - problemas encontrados
@@ -412,6 +440,9 @@ Contenido minimo de `summary.json` de la version:
 
 - accion ejecutada
 - resultado de suficiencia
+- `risk_level`
+- `complexity`
+- `decision_rationale`
 - hallazgos principales
 - riesgos principales
 - ruta del artefacto generado

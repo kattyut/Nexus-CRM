@@ -35,6 +35,7 @@ Debe orquestar servicios especializados:
 | Validar estructura y suficiencia | `ai/services/validation-service.md` |
 | Registrar eventos y errores | `ai/services/logging-service.md` |
 | Persistir evidencia de lectura cuando aplique | `ai/services/artifact-service.md` |
+| Registrar decisiones y resumen trazable | `ai/services/summary-service.md` |
 
 ---
 
@@ -50,6 +51,29 @@ El skill puede recibir:
 - texto manual de una HU
 - ruta de archivo local
 - referencia a una HU ya cargada en contexto
+
+---
+
+# Decision Gate interno
+
+Antes de normalizar y persistir la HU, este skill debe tomar decisiones tecnicas internas sobre:
+
+| Dimension | Decision |
+|---|---|
+| Fuente confiable | Confirmar si la fuente es oficial, manual, local o pendiente de validacion. |
+| Identidad de HU | Confirmar ID real, ID normalizado y coincidencia con proyecto/fuente. |
+| Suficiencia inicial | Clasificar si hay informacion minima para analisis posterior. |
+| Riesgo de lectura | Identificar riesgos de permisos, proyecto incorrecto, respuesta incompleta o fuente ambigua. |
+| Trazabilidad | Definir provider, source, external_url, version y metadata disponible. |
+
+Reglas:
+
+- No degradar fallos Jira/Azure/Planner a HU manual.
+- Si la fuente es texto manual, registrar `source: texto manual`.
+- Si falta informacion critica, bloquear o marcar pendiente segun `validation-service.md`.
+- Registrar decisiones en `summary-service.md` cuando exista cambio trazable y en `logging-service.md` con nivel `DECISION`.
+
+Este gate no cambia el flujo visible: el usuario sigue usando `read-us` igual.
 
 ---
 

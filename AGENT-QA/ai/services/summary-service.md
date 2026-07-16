@@ -14,6 +14,8 @@ Este servicio es responsable de:
 - registrar agents, commands y skills ejecutados
 - registrar metodologias y estrategias utilizadas
 - registrar acciones realizadas
+- registrar decisiones tecnicas internas tomadas por skills
+- consolidar campos de riesgo, complejidad, estrategia, automatizacion y cobertura
 
 Este servicio NO debe:
 
@@ -72,6 +74,13 @@ ai/projects/{project-slug}/artifacts/global/summary.json
 - initial_sufficiency_status
 - latest_analysis_version
 - blocking_errors
+- risk_level
+- complexity
+- recommended_strategy
+- automation_recommendation
+- coverage_summary
+- decisions
+- decision_rationale
 
 ---
 
@@ -86,6 +95,43 @@ ai/projects/{project-slug}/artifacts/global/summary.json
 - Cuando se cree un analisis, actualizar `artifacts.analysis.latest_version`, `path`, `status`, `sufficiency_status` y `updated_at` en el summary raiz de la HU.
 - Cada `analysis/vN/summary.json` debe resumir estado inicial, suficiencia, hallazgos, riesgos y siguiente paso.
 - Registrar lecturas fallidas de herramientas externas como eventos bloqueados, sin generar artefactos QA sustitutos.
+- Registrar decisiones internas de skills aunque no cambie el comando visible usado por el usuario.
+- Cuando aplique, actualizar en el summary raiz de la HU: `risk_level`, `complexity`, `recommended_strategy`, `automation_recommendation`, `coverage_summary` y `last_decisions`.
+
+---
+
+# Summary de decisiones QA
+
+Todo skill que tome decisiones antes de generar debe registrar un bloque de decisiones en el `summary.json` del artefacto y, cuando afecte el estado general de la HU, tambien en el summary raiz.
+
+Formato recomendado:
+
+```json
+{
+  "decisions": [
+    {
+      "id": "decision-001",
+      "skill": "generate-test-cases",
+      "decision_type": "automation_recommendation",
+      "value": "automate",
+      "rationale": "El caso cubre flujo critico repetible con datos controlables descritos en el plan.",
+      "evidence": [
+        "test-plan/v1/test-plan.md",
+        "test-cases/v1/test-cases.md"
+      ],
+      "confidence": "medium",
+      "pending_information": []
+    }
+  ]
+}
+```
+
+Reglas:
+
+- `confidence` debe ser `low`, `medium` o `high`.
+- Si falta informacion, usar `pending_information`.
+- No convertir supuestos en hechos confirmados.
+- Las decisiones deben conservar relacion con version, artefacto fuente y skill ejecutado.
 
 ---
 

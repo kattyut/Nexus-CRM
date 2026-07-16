@@ -85,6 +85,29 @@ Antes de enriquecer:
 
 ---
 
+# Decision Gate interno
+
+Antes de enriquecer, este skill debe detectar oportunidades de mejora con fundamento y justificar cada cambio propuesto.
+
+Debe evaluar:
+
+| Dimension | Que buscar | Regla |
+|---|---|---|
+| Reglas de negocio implicitas | Condiciones repetidas, estados, restricciones o criterios no escritos claramente | Solo convertir en regla si hay evidencia en HU/contexto. |
+| Escenarios faltantes | Flujos alternos, negativos, borde o excepciones no cubiertas | Marcar como pendiente si falta confirmacion. |
+| Actores omitidos | Roles afectados, usuarios secundarios, administradores, sistemas externos | No inventar roles no mencionados ni soportados por contexto. |
+| Validaciones ausentes | Campos, formatos, permisos, obligatoriedad, mensajes, estados | Proponer como validacion candidata si hay fundamento. |
+| Excepciones | Errores, permisos denegados, datos duplicados, datos invalidos | Separar excepciones confirmadas de preguntas abiertas. |
+| Restricciones | Integraciones, seguridad, datos, auditoria, limites MVP, dependencias | Citar origen de la restriccion. |
+
+Cada mejora agregada al enriquecimiento debe incluir evidencia, justificacion, tipo de mejora, impacto QA y estado: `confirmed`, `candidate` o `pending_validation`.
+
+Si no existe fundamento suficiente, no enriquecer ese punto como hecho; registrarlo como pregunta o pendiente.
+
+Registrar decisiones en `summary-service.md` (`decisions`, `risk_level`, `complexity` cuando aplique) y en `logging-service.md` con nivel `DECISION`.
+
+---
+
 # Si NO existe HU
 
 Responder:
@@ -258,6 +281,7 @@ El enriquecimiento debe:
 - mejorar testeabilidad
 - mejorar cobertura QA
 - mejorar trazabilidad
+- incluir decisiones de enriquecimiento y justificacion por mejora
 - respetar el origen de la HU
 - conservar informacion original util
 
@@ -336,6 +360,18 @@ Reglas del encabezado:
 - Si no existe prioridad, usar `Pendiente de definicion`, no inventarla.
 - `Version` debe venir de `versioning-service.md`.
 - `Estado` debe actualizarse segun el flujo de aprobacion y sincronizacion.
+
+## 1.1 Decisiones de enriquecimiento
+
+Debe incluir una seccion breve con:
+
+- mejora aplicada;
+- fundamento/evidencia;
+- tipo de mejora;
+- impacto QA;
+- estado: `confirmed`, `candidate` o `pending_validation`.
+
+No incluir mejoras sin fundamento como reglas confirmadas.
 
 ## 2. Metadata tecnica
 
@@ -460,7 +496,8 @@ Si el usuario aprueba guardar:
 2. Crear estructura faltante automaticamente.
 3. Usar siempre `versioning-service.md` para crear una version de enriquecimiento.
 4. Registrar metadata de version, estrategia, prioridad y origen.
-5. Registrar resumen mediante `summary-service.md`.
+5. Registrar resumen mediante `summary-service.md`, incluyendo decisiones y justificaciones.
+6. Registrar decisiones mediante `logging-service.md` con nivel `DECISION`.
 
 Ruta objetivo:
 

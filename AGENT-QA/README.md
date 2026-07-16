@@ -74,7 +74,7 @@ ai/
     automation-options/
   projects/
     {project-slug}/
-scripts/
+  scripts/
   sync_work_item.py
   ...
 docs/
@@ -95,7 +95,7 @@ docs/
 | `ai/services/` | Centraliza contexto, conexiones, validacion, persistencia, versionamiento, summaries y logs. |
 | `ai/config/` | Contiene reglas globales y catalogos de estrategias, metodologias y frameworks. |
 | `ai/projects/` | Persistencia por proyecto: contexto, configuracion no secreta, artefactos y logs. |
-| `scripts/` | Scripts auxiliares, utilidades y herramientas de soporte para sincronizacion y procesamiento. |
+| `ai/scripts/` | Scripts auxiliares, utilidades y herramientas de soporte para sincronizacion y procesamiento. |
 | `docs/` | Documentacion extendida de arquitectura, flujo, integraciones, servicios y versionamiento. |
 
 ## Agentes
@@ -465,10 +465,15 @@ flowchart LR
 | `docs/integrations.md` | Contratos y reglas de integraciones. |
 | `docs/services.md` | Responsabilidades de servicios. |
 | `docs/versioning.md` | Reglas de versionamiento. |
+| `docs/roadmap.md` | Roadmap tecnico por versiones. |
+| `docs/capabilities.md` | Catalogo oficial de capacidades. |
+| `docs/architecture-evolution.md` | Reglas para evolucionar la arquitectura. |
+| `docs/releases.md` | Historial de releases del producto. |
+| `docs/backlog.md` | Backlog priorizado por epicas, features y tareas. |
 
 ## Scripts y herramientas
 
-La carpeta `scripts/` contiene utilidades auxiliares para:
+La carpeta `ai/scripts/` contiene utilidades auxiliares para:
 
 - sincronizacion con sistemas externos (Jira, Azure DevOps, etc.)
 - procesamiento de artefactos

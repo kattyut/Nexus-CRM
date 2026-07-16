@@ -99,6 +99,36 @@ Las HU incluidas pueden provenir de:
 
 ---
 
+# Decision Gate interno
+
+Antes de generar la matriz, este skill debe calcular cobertura y detectar huecos usando `validation-service.md`.
+
+Debe incorporar:
+
+| Cobertura | Descripcion |
+|---|---|
+| Cobertura por criterio | Cada criterio de aceptacion/regla debe mapearse a uno o mas casos. |
+| Cobertura por HU | Cada HU incluida debe indicar cantidad de criterios, casos y riesgos cubiertos. |
+| Cobertura por riesgo | Riesgos altos/medios/bajos deben mapearse a casos existentes o huecos. |
+
+Debe identificar huecos como:
+
+- criterios sin casos;
+- HU sin casos;
+- riesgos sin cobertura;
+- casos sin trazabilidad;
+- casos manuales sin razon;
+- casos automatizados sin justificacion;
+- duplicidad aparente de cobertura.
+
+Cada hueco debe incluir impacto y recomendacion, sin generar casos nuevos desde la matriz.
+
+Registrar en summary: `coverage_summary`, `risk_level` agregado cuando aplique, huecos y decisiones de cobertura.
+
+Registrar decisiones en `logging-service.md` con nivel `DECISION`.
+
+---
+
 # Dependencias obligatorias
 
 Antes de generar la matriz:
@@ -306,6 +336,11 @@ La matriz debe incluir como minimo estas columnas:
 | Caso de prueba titulo | Titulo del caso |
 | Tipo de prueba | Funcional, integracion, seguridad, etc. |
 | Cobertura | Positiva, negativa, alterna, edge |
+| Cobertura por criterio | Cubierto, Parcial, Sin cobertura |
+| Cobertura por HU | Resumen de cobertura de la HU |
+| Cobertura por riesgo | Riesgo cubierto o hueco identificado |
+| Hueco de cobertura | Si / No y descripcion breve |
+| Recomendacion QA | Accion sugerida para cerrar hueco o mejorar cobertura |
 | Prioridad caso | Alta, Media, Baja |
 | Automatizable | Si, No, Pendiente |
 | Resultado esperado | Resultado verificable |
@@ -460,7 +495,8 @@ Si el usuario aprueba guardar:
 2. Crear estructura faltante automaticamente.
 3. Usar siempre `versioning-service.md` para crear una version de matriz.
 4. Registrar metadata de version, modo, fuentes, cobertura y origen.
-5. Registrar resumen mediante `summary-service.md`.
+5. Registrar resumen mediante `summary-service.md`, incluyendo `coverage_summary`, huecos y decisiones de cobertura.
+6. Registrar decisiones mediante `logging-service.md` con nivel `DECISION`.
 
 Rutas:
 

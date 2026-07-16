@@ -41,6 +41,61 @@ El Validation Service debe:
 - detectar inconsistencias
 - prevenir persistencia invalida
 - detectar informacion inventada o no soportada
+- evaluar decisiones tecnicas internas de los skills antes de generar artefactos
+- exigir justificacion trazable para criticidad, complejidad, riesgo, cobertura y automatizacion
+
+---
+
+# Validacion de decisiones tecnicas
+
+Los skills existentes deben usar este servicio para evaluar y justificar decisiones antes de generar artefactos, sin agregar pasos visibles al usuario ni cambiar el flujo principal.
+
+Estas decisiones deben basarse unicamente en:
+
+1. informacion explicita de la HU o requerimiento;
+2. contexto de negocio del proyecto;
+3. artefactos previos versionados;
+4. reglas y catalogos aprobados;
+5. evidencia tecnica disponible.
+
+Si una decision no tiene fundamento suficiente, debe registrarse como `unknown`, `not_enough_information` o pendiente; nunca debe inventarse.
+
+## Campos de decision soportados
+
+| Campo | Valores esperados | Uso |
+|---|---|---|
+| `risk_level` | `low`, `medium`, `high`, `critical`, `unknown` | Riesgo funcional/tecnico agregado. |
+| `complexity` | `low`, `medium`, `high`, `unknown` | Complejidad funcional o de automatizacion. |
+| `functional_criticality` | `low`, `medium`, `high`, `critical`, `unknown` | Criticidad para negocio/usuario. |
+| `recommended_strategy` | lista o texto controlado | Estrategia QA recomendada. |
+| `automation_recommendation` | `automate`, `manual`, `hybrid`, `not_applicable`, `unknown` | Decision de automatizacion. |
+| `coverage_summary` | objeto/resumen | Cobertura por criterio, HU y riesgo. |
+| `decision_rationale` | texto/lista | Justificacion con evidencia. |
+
+## Reglas de justificacion
+
+Cada decision debe indicar:
+
+- evidencia usada;
+- razonamiento breve;
+- impacto QA;
+- supuestos, si existen;
+- pendientes o informacion faltante.
+
+No son validas justificaciones genericas como "por buenas practicas" si no citan evidencia de HU, contexto, plan, casos o contrato.
+
+## Validacion por skill
+
+| Skill | Decisiones requeridas |
+|---|---|
+| `analyze-us` | criticidad funcional, complejidad funcional, riesgos tecnicos, riesgos funcionales, dependencias, integraciones, impacto potencial. |
+| `enrich-us` | reglas implicitas, escenarios faltantes, actores omitidos, validaciones ausentes, excepciones y restricciones con fundamento. |
+| `generate-test-plan` | estrategia QA recomendada, tipos de prueba aplicables y cobertura sugerida. |
+| `generate-test-cases` | criticidad, prioridad, riesgo y decision manual/automatizar por caso. |
+| `generate-test-matrix` | cobertura por criterio, HU y riesgo; huecos de cobertura. |
+| `generate-test-automation` | casos a automatizar/manuales, prioridad, ROI aproximado y complejidad de mantenimiento. |
+
+La ausencia de estas decisiones debe ser `WARNING` si el artefacto aun puede generarse con calidad aceptable, o `ERROR` si impide generar un resultado trazable sin inventar informacion.
 
 ---
 

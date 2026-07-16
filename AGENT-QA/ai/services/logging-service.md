@@ -16,6 +16,7 @@ Este servicio debe registrar:
 - versionamiento
 - acciones del usuario
 - decisiones del sistema
+- decisiones tecnicas tomadas por skills antes de generar artefactos
 - sincronizacion con herramientas externas
 
 ---
@@ -63,6 +64,7 @@ El Logging Service NO debe:
 | ERROR | Errores del sistema |
 | AUDIT | Cambios auditables |
 | DEBUG | Diagnostico tecnico |
+| DECISION | Decision tecnica tomada por un skill |
 
 ---
 
@@ -78,6 +80,8 @@ Debe registrar:
 - versionamiento
 - cambios de estrategia
 - cambios de metodologia
+- decisiones internas de skills
+- justificacion de recomendaciones de riesgo, cobertura, estrategia y automatizacion
 - conexiones
 - generacion de prompts
 - persistencia aprobada
@@ -132,3 +136,27 @@ Archivos recomendados:
   "message": "Artifact generated successfully"
 }
 ```
+
+## Formato para decisiones
+
+Cuando el evento sea `DECISION`, el log debe incluir:
+
+```json
+{
+  "timestamp": "{iso_datetime}",
+  "level": "DECISION",
+  "service": "logging-service",
+  "skill": "generate-test-automation",
+  "project_slug": "{project_slug}",
+  "hu_id": "{hu_id}",
+  "decision_type": "automation_recommendation",
+  "decision": "automate",
+  "rationale": "Justificacion basada en artefactos existentes.",
+  "evidence": ["test-cases/v1/test-cases.md"],
+  "impact": "Reduce regresion manual en flujo critico.",
+  "confidence": "medium",
+  "pending_information": []
+}
+```
+
+No registrar secretos, tokens, payloads sensibles ni datos personales innecesarios dentro de decisiones.

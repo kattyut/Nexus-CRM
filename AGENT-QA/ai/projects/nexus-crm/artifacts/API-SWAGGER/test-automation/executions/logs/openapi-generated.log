@@ -1,2 +1,35 @@
 [2026-07-09T14:52:46.986Z] openapi analysis completed {"endpoints":42,"auth":[]}
 [2026-07-09T14:53:07.125Z] openapi analysis completed {"endpoints":42,"auth":[]}
+[2026-07-16T19:22:04.523Z] openapi analysis completed {"endpoints":42,"auth":[]}
+[2026-07-16T19:22:21.137Z] openapi analysis completed {"endpoints":42,"auth":[]}
+[2026-07-16T19:22:22.520Z] successful scenario executed {"method":"get","path":"/Cities","status":200}
+[2026-07-16T19:22:22.877Z] successful scenario executed {"method":"get","path":"/Countries","status":200}
+[2026-07-16T19:22:23.006Z] successful scenario executed {"method":"get","path":"/companies","status":400}
+[2026-07-16T19:22:25.086Z] required validation executed {"method":"post","path":"/companies","status":400}
+[2026-07-16T19:22:25.273Z] required validation executed {"method":"put","path":"/companies","status":400}
+[2026-07-16T19:22:25.732Z] required validation executed {"method":"post","path":"/company-sectors","status":400}
+[2026-07-16T19:22:25.825Z] required validation executed {"method":"put","path":"/company-sectors","status":400}
+[2026-07-16T19:22:25.946Z] required validation executed {"method":"post","path":"/company-statuses","status":400}
+[2026-07-16T19:22:26.032Z] required validation executed {"method":"put","path":"/company-statuses","status":400}
+[2026-07-16T19:22:26.103Z] required validation executed {"method":"post","path":"/activity-levels","status":400}
+[2026-07-16T19:22:26.172Z] required validation executed {"method":"put","path":"/activity-levels","status":400}
+[2026-07-16T19:22:26.291Z] required validation executed {"method":"post","path":"/contacts","status":400}
+[2026-07-16T19:22:26.348Z] required validation executed {"method":"put","path":"/contacts","status":400}
+[2026-07-16T19:22:26.451Z] required validation executed {"method":"post","path":"/contact-sources","status":400}
+[2026-07-16T19:22:26.551Z] required validation executed {"method":"put","path":"/contact-sources","status":400}
+[2026-07-16T19:22:26.669Z] required validation executed {"method":"post","path":"/activity-types","status":400}
+[2026-07-16T19:22:26.749Z] required validation executed {"method":"put","path":"/activity-types","status":400}
+[2026-07-16T19:22:26.857Z] invalid id scenario executed {"method":"get","path":"/Cities/{id}","status":404}
+[2026-07-16T19:22:26.872Z] invalid id scenario executed {"method":"put","path":"/Cities/{id}","status":404}
+[2026-07-16T19:22:26.881Z] invalid id scenario executed {"method":"delete","path":"/Cities/{id}","status":404}
+[2026-07-16T19:22:26.899Z] invalid id scenario executed {"method":"get","path":"/Countries/{id}","status":404}
+[2026-07-16T19:22:26.913Z] invalid id scenario executed {"method":"put","path":"/Countries/{id}","status":404}
+[2026-07-16T19:22:26.928Z] invalid id scenario executed {"method":"delete","path":"/Countries/{id}","status":404}
+[2026-07-16T19:22:26.995Z] invalid id scenario executed {"method":"delete","path":"/companies/{id}","status":400}
+[2026-07-16T19:22:27.063Z] invalid id scenario executed {"method":"delete","path":"/company-sectors/{id}","status":400}
+[2026-07-16T19:22:27.148Z] invalid id scenario executed {"method":"delete","path":"/company-statuses/{id}","status":400}
+[2026-07-16T19:22:27.215Z] invalid id scenario executed {"method":"delete","path":"/activity-levels/{id}","status":400}
+[2026-07-16T19:22:27.330Z] invalid id scenario executed {"method":"delete","path":"/contacts/{id}","status":400}
+[2026-07-16T19:22:27.413Z] invalid id scenario executed {"method":"delete","path":"/contact-sources/{id}","status":400}
+[2026-07-16T19:22:27.476Z] invalid id scenario executed {"method":"delete","path":"/activity-types/{id}","status":400}
+[2026-07-16T19:22:27.561Z] invalid id scenario executed {"method":"delete","path":"/activities/{id}","status":400}

@@ -133,6 +133,45 @@ Delegar a `validation-service.md`:
 
 Cuando falte una URL o selector real, usar placeholders seguros y visibles, por ejemplo `BASE_URL` o selectores por rol/texto derivados literalmente del caso. Registrar el pendiente en metadata y README.
 
+## PASO 3.0 - Decision Gate de automatizacion
+
+Antes de generar codigo Playwright, clasificar los casos de prueba y decidir:
+
+- que casos automatizar;
+- que casos dejar manuales;
+- prioridad de automatizacion;
+- ROI aproximado;
+- complejidad de mantenimiento.
+
+La decision debe basarse en:
+
+- criticidad y riesgo del caso;
+- repetibilidad;
+- estabilidad del flujo;
+- disponibilidad de datos de prueba;
+- disponibilidad de URL/rutas/selectores/endpoints;
+- valor de regresion;
+- costo de mantenimiento;
+- dependencia de juicio humano;
+- evidencia de API/UI/E2E en el caso.
+
+Valores esperados:
+
+| Campo | Valores |
+|---|---|
+| `automation_recommendation` | `automate`, `manual`, `hybrid`, `not_applicable`, `unknown` |
+| `automation_priority` | `high`, `medium`, `low` |
+| `roi_estimate` | `high`, `medium`, `low`, `unknown` |
+| `maintenance_complexity` | `low`, `medium`, `high`, `unknown` |
+
+Reglas:
+
+- No automatizar casos que requieran informacion inexistente sin dejar placeholders visibles y pendientes.
+- No convertir un caso manual en automatizado si depende de juicio humano o validacion subjetiva.
+- Automatizar primero casos repetibles, criticos y de alto valor de regresion.
+- Registrar justificacion por caso en metadata, README y summary.
+- Registrar decisiones en `logging-service.md` con nivel `DECISION`.
+
 ## PASO 3.1 - Resolver locators
 
 Delegar a `locator-service.md`:
@@ -250,6 +289,10 @@ Crear `metadata.json` dentro del proyecto generado con:
   "contract_validated": false,
   "supports_page_object": true,
   "supports_fixtures": true,
+  "automation_recommendation": "hybrid",
+  "automation_decisions": [],
+  "roi_estimate": "medium",
+  "maintenance_complexity": "medium",
   "automation_version": "vN",
   "latest": true,
   "project_slug": "{project_slug}",
@@ -292,6 +335,11 @@ Agregar o actualizar:
 - `artifacts.test_automation.path`
 - `artifacts.test_automation.status`
 - `artifacts.test_automation.latest_path`
+- `automation_recommendation`
+- `coverage_summary`
+- `decisions`
+- `roi_estimate`
+- `maintenance_complexity`
 
 ## PASO 9 - Logging
 
@@ -302,6 +350,9 @@ Registrar en `ai/projects/{project_slug}/logs/`:
 - ruta de salida;
 - artefactos generados;
 - version creada;
+- decisiones de automatizacion por caso;
+- ROI aproximado;
+- complejidad de mantenimiento;
 - errores o pendientes;
 - tiempo de ejecucion.
 
